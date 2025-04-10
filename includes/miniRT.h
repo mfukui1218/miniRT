@@ -39,7 +39,7 @@ typedef struct s_light
 
 typedef struct s_object
 {
-    int type; // 0: sphere, 1: plane, 2: cylinder
+    int type;
     t_vector position;
     t_vector orientation;
     t_color color;

@@ -1,0 +1,15 @@
+.DS_Store
+srcs/libft/.DS_Store
+srcs/libft/obj/
+srcs/libft/*.o
+srcs/libft/libft.a
+srcs/init/.DS_Store
+srcs/init/*.o
+*.out
+.vscode
+test.c
+test
+*.o
+obj/
+miniRT
+minilibx-linux
