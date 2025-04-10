@@ -1,7 +1,7 @@
-#ifndef miniRT_H
-#define miniRT_H
+#ifndef MINIRT_H
+#define MINIRT_H
 
-#include "mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "vector.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,9 +11,22 @@
 #include <string.h>
 #include <sys/types.h>
 
+typedef struct s_camera t_camera;
+typedef struct s_light t_light;
+typedef struct s_object t_object;
+typedef struct s_scene t_scene;
+typedef struct s_ray t_ray;
+
+typedef struct s_color
+{
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+} t_color;
+
 typedef struct miniRT
 {
-    t_mlx *mlx;
+    void *mlx;
     t_camera *camera;
     t_light *light;
     t_object *object;
@@ -59,11 +72,21 @@ typedef struct s_scene
     double light_intensity;
 } t_scene;
 
-typedef struct s_color
+typedef struct s_ray
 {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-} t_color;
+    t_vector origin;
+    t_vector direction;
+} t_ray;
+
+
+void init_miniRT(t_miniRT *miniRT);
+void init_camera(t_camera *camera);
+void init_light(t_light *light);
+void init_object(t_object *object);
+void init_scene(t_scene *scene);
+void init_vector(t_vector *vector);
+void init_color(t_color *color);
+void init_ray(t_ray *ray);
+
 
 #endif

@@ -14,7 +14,7 @@ LD_FLAGS		:=	-L$(LIBFT_DIR)
 LD_LIBS			:=	-lft -lreadline 
 INC				:=	-Iincludes -I$(LIBFT_DIR) -MMD -MP
 
-vpath %.c	./srcs:./srcs/main::./srcs/init:./srcs/math:./srcs/mlx:./srcs/parse:./srcs/render:./srcs/utils:
+vpath %.c	./srcs:./srcs/main:./srcs/init:./srcs/math:./srcs/mlx:./srcs/parse:./srcs/render:./srcs/utils:
 
 $(NAME) : $(OBJS) $(LIBFT_DIR)/libft.a
 	$(CC) $(CFLAGS) $(OBJS) $(LD_FLAGS) $(LD_LIBS) -o $@
@@ -28,7 +28,7 @@ $(LIBFT_DIR)/libft.a: $(LIBFT_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-all:	$(NAME)
+all:	$(NAME)z
 
 clean:
 	$(RM) -r $(OBJS) $(OBJ_DIR)
