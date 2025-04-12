@@ -3,6 +3,7 @@
 void init_miniRT(t_miniRT *miniRT)
 {
     mlx_init(miniRT->mlx);
+    miniRT->win = NULL;
     init_camera(miniRT->camera);
     init_light(miniRT->light);
     init_object(miniRT->object);

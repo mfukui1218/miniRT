@@ -6,3 +6,4 @@ void error_message(int eroor)
         printf("Error\nAllocation error\n");
     exit(0);
 }
+

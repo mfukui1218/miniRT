@@ -7,9 +7,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdbool.h>
 #include <math.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+
 
 typedef struct s_camera t_camera;
 typedef struct s_light t_light;
@@ -27,6 +30,8 @@ typedef struct s_color
 typedef struct miniRT
 {
     void *mlx;
+    void *win;
+    char **rt;
     t_camera *camera;
     t_light *light;
     t_object *object;
@@ -78,6 +83,10 @@ typedef struct s_ray
     t_vector direction;
 } t_ray;
 
+typedef enum error
+{
+    ALLOCATE = 1,
+} t_error;
 
 void init_miniRT(t_miniRT *miniRT);
 void init_camera(t_camera *camera);
