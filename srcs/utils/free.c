@@ -1,62 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/16 13:41:14 by mfukui           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "miniRT.h"
 
-void free_miniRT(t_miniRT *miniRT)
+void	free_rt(t_rt *rt)
 {
-    if (!miniRT)
-        return;
-    if (miniRT->win)
-        mlx_destroy_window(miniRT->mlx, miniRT->win);
-    if (miniRT->mlx)
-        mlx_destroy_display(miniRT->mlx);
-    if (miniRT->camera)
-        free_camera(miniRT->camera);
-    if (miniRT->light)
-        free_light(miniRT->light);
-    if (miniRT->object)
-        free_object(miniRT->object);
-    if (miniRT->scene)
-        free_scene(miniRT->scene);
-    if (miniRT->vector)
-        free_vector(miniRT->vector);
-    if (miniRT->color)
-        free_color(miniRT->color);
-    if (miniRT->ray)
-        free_ray(miniRT->ray);
-    free(miniRT);
+	if (!rt)
+		return ;
+	if (rt->win)
+		mlx_destroy_window(rt->mlx, rt->win);
+	if (rt->mlx)
+		mlx_destroy_display(rt->mlx);
+	if (rt->camera)
+		free_camera(rt->camera);
+	if (rt->ambient)
+		free_ambient(rt->ambient);
+	if (rt->light)
+		free_light(rt->light);
+	if (rt->object)
+		free_object(rt->object);
+	free(rt);
+	rt = NULL;
 }
 
-void free_camera(t_camera *camera)
+void	free_camera(t_camera *camera)
 {
-    free(camera);
+	free(camera);
+	camera = NULL;
 }
 
-void free_light(t_light *light)
+void	free_ambient(t_ambient *ambient)
 {
-    free(light);
+	free(ambient);
+	ambient = NULL;
 }
 
-void free_object(t_object *object)
+void	free_light(t_light *light)
 {
-    free(object);
+	free(light);
+	light = NULL;
 }
 
-void free_scene(t_scene *scene)
+void	free_object(t_object *object)
 {
-    if (scene->camera)
-        free_camera(scene->camera);
-    if (scene->lights)
-        free_light(scene->lights);
-    if (scene->objects)
-        free_object(scene->objects);
-    free(scene);
+	free(object);
+	object = NULL;
 }
 
-void free_vector(t_vector *vector)
+void	free_vector(t_vector *vector)
 {
-    free(vector);
+	free(vector);
+	vector = NULL;
 }
 
-void free_color(t_color *color)
+void	free_color(t_color *color)
 {
-    free(color);
+	free(color);
+	color = NULL;
+}
+
+void	free_split(char **split)
+{
+	size_t	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		split[i] = NULL;
+		i++;
+	}
+	free(split);
+	split = NULL;
 }

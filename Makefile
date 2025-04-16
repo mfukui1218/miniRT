@@ -1,43 +1,93 @@
-NAME			:=	miniRT
+NAME        := miniRT
 
-SRCS			:=	main.c \
-					init.c \
+# ソースファイル（パス付き）
+SRCS := main.c \
+        init.c \
+        gnl/get_next_line.c \
+        gnl/get_next_line_utils.c \
+		render.c \
+		error.c \
 
-					
+# ディレクトリ設定
+SRC_DIR     := ./srcs
+OBJ_DIR     := ./obj
+LIBFT_DIR   := libft
+GNL_DIR   := gnl
+MLX_DIR     := minilibx-linux
 
-CC				:=	cc
-CFLAGS			:=	-Wall -Wextra -Werror
-OBJ_DIR			:=	./obj
-OBJS			:=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
-LIBFT_DIR		:=	srcs/libft
-LD_FLAGS		:=	-L$(LIBFT_DIR)
-LD_LIBS			:=	-lft -lreadline 
-INC				:=	-Iincludes -I$(LIBFT_DIR) -MMD -MP
+# ライブラリ
+LIBFT_LIB   := $(LIBFT_DIR)/libft.a
+MLX_LIB     := $(MLX_DIR)/libmlx.a
 
-vpath %.c	./srcs:./srcs/main:./srcs/init:./srcs/math:./srcs/mlx:./srcs/parse:./srcs/render:./srcs/utils:
+# オブジェクトファイルのパスを構築
+OBJS        := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
+DEPENDS     := $(OBJS:.o=.d)
 
-$(NAME) : $(OBJS) $(LIBFT_DIR)/libft.a
+# コンパイラ設定
+CC          := cc
+CFLAGS      := -Wall -Wextra -Werror -MMD -MP
+INC         := -Iincludes -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(GNL_DIR)
+
+# リンクオプション
+LD_FLAGS    := -L$(LIBFT_DIR) -L$(MLX_DIR) -L$(GNL_DIR)
+LD_LIBS     := $(LIBFT_LIB) $(MLX_LIB) -lXext -lX11 -lm -lz -lreadline
+
+# vpath でソース検索ディレクトリ設定
+vpath %.c \
+	. \
+	$(SRC_DIR) \
+	$(SRC_DIR)/main \
+	$(SRC_DIR)/init \
+	$(SRC_DIR)/gnl \
+	$(SRC_DIR)/render \
+	$(SRC_DIR)/utils \
+	./gnl
+
+# ================================
+# Main targets
+# ================================
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB) $(GNL_LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LD_FLAGS) $(LD_LIBS) -o $@
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+# オブジェクトファイルのビルドルール
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(LIBFT_DIR)/libft.a: $(LIBFT_DIR)
-	$(MAKE) complete -C $(LIBFT_DIR)
+# libft ビルド
+$(LIBFT_LIB):
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# MiniLibX ビルド
+$(MLX_LIB):
+	$(MAKE) -C $(MLX_DIR)
 
-all:	$(NAME)z
+
+# ================================
+# Utilities
+# ================================
 
 clean:
-	$(RM) -r $(OBJS) $(OBJ_DIR)
+	$(RM) -r $(OBJ_DIR)
 	$(MAKE) clean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(MLX_DIR)
+	$(RM) -r $(GNL_DIR)/.dSYM || true
 
-fclean:	clean
-	$(RM) $(NAME) 
-	$(MAKE) fclean -C $(LIBFT_DIR)
+fclean: clean
+	$(RM) $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR) || true
+	$(MAKE) clean -C $(MLX_DIR)
+	$(MAKE) fclean -C $(GNL_DIR) || true
 
-re:	fclean all
+re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: all clean fclean re
+
+# ================================
+# 依存ファイル読み込み
+# ================================
+
+-include $(DEPENDS)

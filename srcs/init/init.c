@@ -1,71 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/15 22:00:34 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/16 13:33:14 by mfukui           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "miniRT.h"
 
-void init_miniRT(t_miniRT *miniRT)
+void	init_rt(t_rt *rt)
 {
-    mlx_init(miniRT->mlx);
-    miniRT->win = NULL;
-    init_camera(miniRT->camera);
-    init_light(miniRT->light);
-    init_object(miniRT->object);
-    init_scene(miniRT->scene);
-    init_vector(miniRT->vector);
-    init_color(miniRT->color);
-    init_ray(miniRT->ray);
+	rt->mlx = NULL;
+	rt->win = NULL;
+	rt->rt = NULL;
+	rt->ambient = NULL;
+	rt->camera = NULL;
+	rt->light = NULL;
+	rt->object = NULL;
 }
 
-void init_camera(t_camera *camera)
+void	init_ambient(t_ambient *ambient)
 {
-    camera->position = (t_vector){0, 0, 0};
-    camera->orientation = (t_vector){0, 0, -1};
-    camera->fov = 0;
+	ambient->brightness = 0;
+	ambient->color = (t_color){0, 0, 0};
 }
 
-void init_light(t_light *light)
+void	init_camera(t_camera *camera)
 {
-    light->position = (t_vector){0, 0, 0};
-    light->brightness = 0;
-    light->color = (t_color){255, 255, 255};
+	camera->position = (t_vector){0, 0, 0};
+	camera->orientation = (t_vector){0, 0, -1};
+	camera->fov = 0;
 }
 
-void init_object(t_object *object)
+void	init_light(t_light *light)
 {
-    object->type = 0;
-    object->position = (t_vector){0, 0, 0};
-    object->orientation = (t_vector){0, 0, 0};
-    object->color = (t_color){255, 255, 255};
-    object->radius = 0;
-    object->height = 0;
+	light->position = (t_vector){0, 0, 0};
+	light->brightness = 0;
+	light->color = (t_color){255, 255, 255};
 }
 
-void init_scene(t_scene *scene)
+void	init_object(t_object *object)
 {
-    scene->camera = NULL;
-    scene->lights = NULL;
-    scene->objects = NULL;
-    scene->ambient = (t_color){0, 0, 0};
-    scene->width = 0;
-    scene->height = 0;
-    scene->background_color = (t_color){0, 0, 0};
-    scene->light_intensity = 0.0;
+	object->type = 0;
+	object->position = (t_vector){0, 0, 0};
+	object->orientation = (t_vector){0, 0, 0};
+	object->color = (t_color){255, 255, 255};
+	object->radius = 0;
+	object->height = 0;
 }
 
-
-void init_vector(t_vector *vector)
+void	init_vector(t_vector *vector)
 {
-    vector->x = 0;
-    vector->y = 0;
-    vector->z = 0;
+	vector->x = 0;
+	vector->y = 0;
+	vector->z = 0;
 }
 
-void init_color(t_color *color)
+void	init_color(t_color *color)
 {
-    color->r = 0;
-    color->g = 0;
-    color->b = 0;
-}
-
-void init_ray(t_ray *ray)
-{
-    ray->origin = (t_vector){0, 0, 0};
-    ray->direction = (t_vector){0, 0, 0};
+	color->r = 0;
+	color->g = 0;
+	color->b = 0;
 }

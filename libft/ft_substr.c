@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 17:07:10 by mfukui            #+#    #+#             */
-/*   Updated: 2023/09/27 00:54:25 by mfukui           ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ft_substr.c										:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: mfukui <mfukui@student.42.fr>			  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2023/09/20 17:07:10 by mfukui			#+#	#+#			 */
+/*   Updated: 2023/09/27 00:54:25 by mfukui		   ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -46,13 +46,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 // int main(void)
 // {
-//     char str[] = "ABCDE";
-//     char *substr;
+//	 char str[] = "ABCDE";
+//	 char *substr;
 
-//     substr = ft_substr(str, 2, 3);
-//     printf("Original string: %s\n", str);
-//     printf("Sub-string: %s\n", substr);
+//	 substr = ft_substr(str, 2, 3);
+//	 printf("Original string: %s\n", str);
+//	 printf("Sub-string: %s\n", substr);
 
-//     free(substr);  // mallocで確保したメモリは使用後に解放する必要があります。
-//     return 0;
+//	 free(substr);  // mallocで確保したメモリは使用後に解放する必要があります。
+//	 return 0;
 // }

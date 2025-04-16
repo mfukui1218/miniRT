@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   condition_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/15 22:03:27 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/16 13:40:58 by mfukui           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "miniRT.h"
 
 int	has_one_info(char **txt, char *str)
 {
-	size_t i;
-	int signal;
+	size_t	i;
+	int		signal;
 
 	signal = 0;
 	i = 0;
@@ -21,71 +33,58 @@ int	has_one_info(char **txt, char *str)
 		return (printf("Error\nThere is no %s\n", str), 0);
 }
 
-bool is_start_str(char *str, char *start)
+bool	is_start_str(char *str, char *start)
 {
-    size_t i;
-    size_t j;
+	size_t	i;
+	size_t	j;
 
-    i = skip_space(str);
-    j = 0;
-    while (str[i] && start[j])
-    {
-        if (str[i] != start[j])
-            return (false);
-        j++;
-        i++;
-    }
-    if (start[j] == '\0' && (str[i] == ' ' || str[i] == '\0'))
-        return (true);
-    return (false);
+	i = skip_space(str);
+	j = 0;
+	while (str[i] && start[j])
+	{
+		if (str[i] != start[j])
+			return (false);
+		j++;
+		i++;
+	}
+	if (start[j] == '\0' && (str[i] == ' ' || str[i] == '\0'))
+		return (true);
+	return (false);
 }
 
-void free_split(char **split)
+float	ft_atof(char *str)
 {
-    size_t i;
+	float	result;
+	float	fraction;
+	int		sign;
+	int		i;
+	int		divisor;
 
-    i = 0;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
-}
-
-float ft_atof(char *str)
-{
-    float result;
-    float fraction;
-    int sign;
-    int i;
-    int divisor;
-
-    result = 0.0f;
-    sign = 1;
-    divisor = 10;
-    fraction = 0.0f;
-    i = 0;
-    i += skip_space(str);
-    if (str[i] == '+' || str[i] == '-')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        result = result * 10 + (str[i] - '0');
-        i++;
-    }
-    if (str[i] == '.')
-    {
-        i++;
-        while (str[i] >= '0' && str[i] <= '9')
-        {
-            fraction += (float)(str[i] - '0') / divisor;
-            divisor *= 10;
-            i++;
-        }
-    }
+	result = 0.0f;
+	sign = 1;
+	divisor = 10;
+	fraction = 0.0f;
+	i = 0;
+	i += skip_space(str);
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	if (str[i] == '.')
+	{
+		i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			fraction += (float)(str[i] - '0') / divisor;
+			divisor *= 10;
+			i++;
+		}
+	}
 }
