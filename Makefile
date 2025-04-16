@@ -12,6 +12,7 @@ SRCS := main.c \
 		condition.c \
 		condition2.c \
 		condition_utils.c \
+		condition_utils2.c \
 
 # ディレクトリ設定
 SRC_DIR     := ./srcs

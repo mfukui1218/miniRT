@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:27 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 18:13:43 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/16 18:35:29 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,77 +90,21 @@ float	ft_atof(char *str)
 	return (result * sign);
 }
 
-bool	parse_number_with_comma(char *str, size_t *j)
-{
-	if (str[*j] == '-')
-		(*j)++;
-	if (!('0' <= str[*j] && str[*j] <= '9'))
-		return (false);
-	while ('0' <= str[*j] && str[*j] <= '9')
-		(*j)++;
-	if (str[*j] != ',')
-		return (false);
-	(*j)++;
-	return (true);
-}
-
-bool	parse_last_number(char *str, size_t *j)
-{
-	if (str[*j] == '-')
-		(*j)++;
-	if (!('0' <= str[*j] && str[*j] <= '9'))
-		return (false);
-	while ('0' <= str[*j] && str[*j] <= '9')
-		(*j)++;
-	if (str[*j] && str[*j] != ' ' && str[*j] != '\t')
-		return (false);
-	return (true);
-}
-
-bool	check_three_range(char *str, int min, int max)
-{
-	char	**vec;
-	int		n;
-	int		i;
-
-	vec = ft_split(str, ',');
-	if (!vec)
-		return (error_message(ALLOCATE), false);
-	i = 0;
-	while (i < 3)
-	{
-		n = ft_atoi(vec[i]);
-		if (n < min || n > max)
-			return (free_split(vec), false);
-		i++;
-	}
-	free_split(vec);
-	return (true);
-}
-
-bool	parse_and_check(char *str, size_t *j, bool (*check)(char *, size_t *))
-{
-	*j += skip_space(str + *j);
-	if (!check(str, j))
-		return (false);
-	return (true);
-}
-
-size_t	find_line_str(char **str, char *start)
+size_t	find_line_str(char **rt, char *start)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (rt[i])
 	{
-		if (is_start_str(str + i, start))
+		if (is_start_str(rt[i], start))
 			return (i);
 		i++;
 	}
 	return (0);
 }
 
-int has_object_info(char **rt)
+int	has_object_info(char **rt)
 {
 	size_t	i;
 	int		signal;

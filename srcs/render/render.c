@@ -6,13 +6,13 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 14:36:20 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/16 18:53:08 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	set_rt(t_rt *rt, char *file_name)
+bool	parse_rt(t_rt *rt, char *file_name)
 {
 	size_t	i;
 
@@ -22,35 +22,37 @@ bool	set_rt(t_rt *rt, char *file_name)
 	rt->win = mlx_new_window(rt->mlx, 80, 100, "miniRT");
 	if (!rt->win)
 		return (error_message(ALLOCATE), false);
-	if (!set_txt(rt, file_name))
+	if (!parse_txt(rt, file_name))
+		return (false);
+	if (!is_valid_condition(rt->rt))
 		return (false);
 	i = 0;
 	while (rt->rt[i])
 	{
 		if (is_start_str(rt->rt[i], "C"))
-			if (!set_camera(rt, rt->rt[i]))
+			if (!parse_camera(rt, rt->rt[i]))
 				return (false);
 		if (is_start_str(rt->rt[i], "A"))
-			if (!set_ambient(rt, rt->rt[i]))
+			if (!parse_ambient(rt, rt->rt[i]))
 				return (false);
 		if (is_start_str(rt->rt[i], "L"))
-			if (!set_light(rt, rt->rt[i]))
+			if (!parse_light(rt, rt->rt[i]))
 				return (false);
 		if (is_start_str(rt->rt[i], "sp"))
-			if (!set_object(rt, rt->rt[i]))
+			if (!parse_object(rt, rt->rt[i]))
 				return (false);
 		if (is_start_str(rt->rt[i], "pl"))
-			if (!set_object(rt, rt->rt[i]))
+			if (!parse_object(rt, rt->rt[i]))
 				return (false);
 		if (is_start_str(rt->rt[i], "cy"))
-			if (!set_object(rt, rt->rt[i]))
+			if (!parse_object(rt, rt->rt[i]))
 				return (false);
 		i++;
 	}
 	return (true);
 }
 
-bool	set_txt(t_rt *rt, char *file_name)
+bool	parse_txt(t_rt *rt, char *file_name)
 {
 	int	fd;
 	int	i;
@@ -73,29 +75,7 @@ bool	set_txt(t_rt *rt, char *file_name)
 	return (true);
 }
 
-bool	set_camera(t_rt *rt, char *line)
-{
-	int	i;
-
-	rt->camera = malloc(sizeof(t_camera));
-	if (!rt->camera)
-		return (error_message(ALLOCATE), false);
-	init_camera(rt->camera);
-	i = 0;
-	i += skip_space(line) + 1;
-	i += skip_space(line + i);
-	if (!set_coordinate(rt, line, &i))
-		return (false);
-	i += skip_space(line + i);
-	if (!set_vector(rt, line, &i))
-		return (false);
-	i += skip_space(line + i);
-	if (!set_fov(rt, line, &i))
-		return (false);
-	return (true);
-}
-
-bool	set_ambient(t_rt *rt, char *line)
+bool	parse_ambient(t_rt *rt, char *line)
 {
 	int	i;
 
@@ -106,32 +86,10 @@ bool	set_ambient(t_rt *rt, char *line)
 	i = 0;
 	i += skip_space(line) + 1;
 	i += skip_space(line + i);
-	if (!set_brightness(rt, line, &i))
+	if (!parse_brightness(rt, line, &i))
 		return (false);
 	i += skip_space(line + i);
-	if (!set_color(rt, line, &i))
-		return (false);
-	return (true);
-}
-
-bool	set_light(t_rt *rt, char *line)
-{
-	int	i;
-
-	rt->light = malloc(sizeof(t_light));
-	if (!rt->light)
-		return (error_message(ALLOCATE), false);
-	init_light(rt->light);
-	i = 0;
-	i += skip_space(line) + 1;
-	i += skip_space(line + i);
-	if (!set_position(rt, line, &i))
-		return (false);
-	i += skip_space(line + i);
-	if (!set_brightness(rt, line, &i))
-		return (false);
-	i += skip_space(line + i);
-	if (!set_color(rt, line, &i))
+	if (!parse_color(rt, line, &i))
 		return (false);
 	return (true);
 }

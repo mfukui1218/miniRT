@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 18:13:50 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/16 18:51:28 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ typedef enum error
 	CYLINDER_RANGE,
 	AMBIENT_RT,
 	AMBIENT_RANGE,
-	
-
 }	t_error;
 
 #define MAX_TXT_HEIGHT 200
@@ -116,19 +114,14 @@ void	init_vector(t_vector *vector);
 void	init_color(t_color *color);
 
 //set
-bool	set_rt(t_rt *rt, char *file_name);
-bool	set_txt(t_rt *rt, char *file_name);
-bool	set_camera(t_rt *rt, char *line);
-bool	set_ambient(t_rt *rt, char *line);
-bool	set_light(t_rt *rt, char *line);
-bool	set_object(t_rt *rt, char *line);
-bool	set_coordinate(t_rt *rt, char *line, int *i);
-bool	set_vector(t_rt *rt, char *line, int *i);
-bool	set_color(t_rt *rt, char *line, int *i);
-bool	set_brightness(t_rt *rt, char *line, int *i);
-bool	set_fov(t_rt *rt, char *line, int *i);
-bool	set_radius(t_rt *rt, char *line, int *i);
-bool	set_position(t_rt *rt, char *line, int *i);
+bool	parse_rt(t_rt *rt, char *file_name);
+bool	parse_txt(t_rt *rt, char *file_name);
+bool	parse_camera(t_rt *rt, char *line);
+bool	parse_ambient(t_rt *rt, char *line);
+bool	parse_light(t_rt *rt, char *line);
+bool	parse_object(t_rt *rt, char *line);
+bool	parse_color(t_rt *rt, char *line, size_t *j);
+
 
 //error
 void	error_message(int error);
@@ -140,7 +133,7 @@ bool	is_start_str(char *str, char *start);
 float	ft_atof(char *str);
 int		has_one_info(char **rt, char *str);
 int		has_object_info(char **rt);
-size_t	find_line_str(char **str, char *start);
+size_t	find_line_str(char **rt, char *start);
 
 //condition
 bool	is_valid_condition(char **rt);
@@ -154,29 +147,13 @@ bool	is_valid_brightness(char *str, size_t *j);
 bool	is_valid_color(char *str, size_t *j);
 bool	is_valid_fov(char *str, size_t *j);
 bool	is_valid_vector(char *str, size_t *j);
-bool	is_valid_coordinate_rt(char *str, size_t *j);
-bool	is_valid_brightness_rt(char *str, size_t *j);
-bool	is_valid_color_rt(char *str, size_t *j);
-bool	is_valid_fov_rt(char *str, size_t *j);
-bool	is_valid_vector_rt(char *str, size_t *j);
-bool	is_valid_coordinate_range(char *str);
-bool	is_valid_brightness_range(char *str);
-bool	is_valid_color_range(char *str);
-bool	is_valid_fov_range(char *str);
-bool	is_valid_vector_range(char *str);
 bool	is_valid_sphere(char *str);
 bool	is_valid_plane(char *str);
 bool	is_valid_cylinder(char *str);
-bool	is_valid_radius(char *str, size_t *j);
-bool	is_valid_radius_rt(char *str, size_t *j);
-bool	is_valid_radius_range(char *str);
-bool	is_valid_height(char *str, size_t *j);
-bool	is_valid_height_rt(char *str, size_t *j);
-bool	is_valid_height_range(char *str);
 
 bool	check_three_range(char *str, int min, int max);
-bool	parse_number_with_comma(char *str, size_t *j);
-bool	parse_last_number(char *str, size_t *j);
+bool	check_number_with_comma(char *str, size_t *j);
+bool	check_last_number(char *str, size_t *j);
 
 
 
