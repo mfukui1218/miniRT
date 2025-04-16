@@ -10,6 +10,7 @@ SRCS := main.c \
 		utils.c \
 		free.c \
 		condition.c \
+		condition2.c \
 		condition_utils.c \
 
 # ディレクトリ設定
