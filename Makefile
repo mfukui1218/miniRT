@@ -7,6 +7,10 @@ SRCS := main.c \
         gnl/get_next_line_utils.c \
 		render.c \
 		error.c \
+		utils.c \
+		free.c \
+		condition.c \
+		condition_utils.c \
 
 # ディレクトリ設定
 SRC_DIR     := ./srcs

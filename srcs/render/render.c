@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 13:53:27 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:36:20 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,8 @@ bool	set_rt(t_rt *rt, char *file_name)
 		if (is_start_str(rt->rt[i], "cy"))
 			if (!set_object(rt, rt->rt[i]))
 				return (false);
+		i++;
 	}
-	if (!set_scene(rt))
-		return (false);
-	if (!set_color(rt))
-		return (false);
-	if (!set_vector(rt))
-		return (false);
-	if (!set_ray(rt))
-		return (false);
 	return (true);
 }
 

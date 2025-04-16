@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:43 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 13:11:15 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:34:11 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,10 @@ size_t	skip_space(char *str)
 		i++;
 	return (i);
 }
+
+void	inclement_ij(size_t *i, size_t *j)
+{
+	(*i)++;
+	(*j)++;
+}
+
