@@ -9,10 +9,13 @@ SRCS := main.c \
 		error.c \
 		utils.c \
 		free.c \
-		condition.c \
-		condition2.c \
 		condition_utils.c \
 		condition_utils2.c \
+		parse_camera.c \
+		parse_ambient.c \
+		parse_light.c \
+		parse_setters.c \
+		parse_utils.c \
 
 # ディレクトリ設定
 SRC_DIR     := ./srcs
@@ -47,6 +50,7 @@ vpath %.c \
 	$(SRC_DIR)/gnl \
 	$(SRC_DIR)/render \
 	$(SRC_DIR)/utils \
+	$(SRC_DIR)/parse \
 	./gnl
 
 # ================================

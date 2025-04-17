@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parce_light.c                                      :+:      :+:    :+:   */
+/*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 18:39:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 18:53:45 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/16 18:29:55 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/18 01:06:04 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-
-bool	parse_light(t_rt *rt, char *line)
+bool	parse_camera(t_rt *rt)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
 
-	rt->light = malloc(sizeof(t_light));
-	if (!rt->light)
+	rt->camera = malloc(sizeof(t_camera));
+	if (!rt->camera)
 		return (error_message(ALLOCATE), false);
-	init_light(rt->light);
-	i = 0;
-	i += skip_space(line) + 1;
-	i += skip_space(line + i);
-	if (!parse_position(rt, line, &i))
+	init_camera(rt->camera);
+	i = find_line_str(rt->rt, "C");
+	j = skip_space(rt->rt[i]) + 1;
+	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
-	i += skip_space(line + i);
-	if (!parse_brightness(rt, line, &i))
+	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->orientation), (bool (*)(void *, char *, size_t *))set_vector))
 		return (false);
-	i += skip_space(line + i);
-	if (!parse_color(rt, line, &i))
+	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->fov), (bool (*)(void *, char *, size_t *))set_fov))
 		return (false);
 	return (true);
 }

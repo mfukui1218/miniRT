@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 18:51:28 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 01:35:41 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct s_color
 	unsigned char	b;
 }	t_color;
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
 typedef struct rt
 {
 	void		*mlx;
@@ -48,7 +54,7 @@ typedef struct rt
 	t_camera	*camera;
 	t_ambient	*ambient;
 	t_light		*light;
-	t_object	*object;
+	t_list		*object;
 }	t_rt;
 
 typedef struct s_camera
@@ -83,7 +89,9 @@ typedef struct s_object
 
 typedef enum error
 {
-	ALLOCATE = 1,
+	MLX = 1,
+	WIN,
+	ALLOCATE,
 	OPEN,
 	COORDINATE_RT,
 	COORDINATE_RANGE,
@@ -116,11 +124,10 @@ void	init_color(t_color *color);
 //set
 bool	parse_rt(t_rt *rt, char *file_name);
 bool	parse_txt(t_rt *rt, char *file_name);
-bool	parse_camera(t_rt *rt, char *line);
-bool	parse_ambient(t_rt *rt, char *line);
-bool	parse_light(t_rt *rt, char *line);
-bool	parse_object(t_rt *rt, char *line);
-bool	parse_color(t_rt *rt, char *line, size_t *j);
+bool	parse_camera(t_rt *rt);
+bool	parse_ambient(t_rt *rt);
+bool	parse_light(t_rt *rt);
+bool	parse_object(t_rt *rt);
 
 
 //error
@@ -138,24 +145,24 @@ size_t	find_line_str(char **rt, char *start);
 //condition
 bool	is_valid_condition(char **rt);
 bool	parse_and_check(char *str, size_t *j, bool (*check)(char *, size_t *));
-bool	is_valid_camera(char **rt);
-bool	is_valid_ambient(char **rt);
-bool	is_valid_light(char **rt);
-bool	is_valid_object(char **rt);
-bool	is_valid_coordinate(char *str, size_t *j);
-bool	is_valid_brightness(char *str, size_t *j);
-bool	is_valid_color(char *str, size_t *j);
-bool	is_valid_fov(char *str, size_t *j);
-bool	is_valid_vector(char *str, size_t *j);
-bool	is_valid_sphere(char *str);
-bool	is_valid_plane(char *str);
-bool	is_valid_cylinder(char *str);
 
 bool	check_three_range(char *str, int min, int max);
 bool	check_number_with_comma(char *str, size_t *j);
 bool	check_last_number(char *str, size_t *j);
 
+//parse
 
+bool	set_coordinate(t_vector *vec, char *str, size_t *i);
+bool	set_vector(t_vector *vec, char *str, size_t *i);
+bool	set_fov(int *fov, char *str, size_t *i);
+bool	skip_and_set(char *line, size_t *i, void *dst, bool (*func)(void *, char *, size_t *));
+bool	set_brightness(float *brightness, char *str, size_t *i);
+bool	set_color(t_color *color, char *str, size_t *i);
+bool	set_diameter(t_object *object, char *str, size_t *i);
+int 	ft_atoi_index(char *str, size_t *i);
+float 	ft_atof_index(char *str, size_t *i);
+bool	check_range_int(int value, int min, int max);
+bool	check_range_float(float value, float min, float max);
 
 //free
 void	free_rt(t_rt *rt);

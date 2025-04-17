@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 14:58:35 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/17 23:05:03 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	error_message(int eroor)
 {
-	if (eroor == ALLOCATE)
+	if (eroor == MLX)
+		printf("Error\nMLX error\n");
+	else if (eroor == WIN)
+		printf("Error\nWindow error\n");
+	else if (eroor == ALLOCATE)
 		printf("Error\nAllocation error\n");
 	else if (eroor == OPEN)
 		printf("Error\nFile open error\n");
