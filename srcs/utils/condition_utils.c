@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:27 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 18:35:29 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 02:00:36 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ bool	is_start_str(char *str, char *start)
 	size_t	j;
 
 	i = skip_space(str);
-	j = 0;
-	while (str[i] && start[j])
+	while (str[i])
 	{
-		if (str[i] != start[j])
-			return (false);
-		inclement_ij(&i, &j);
+		j = 0;
+		while (start[j] && str[i + j] == start[j])
+			j++;
+		if (start[j] == '\0' && (str[i + j] == ' ' || str[i + j] == '\t'))
+			return (true);
+		i++;
 	}
-	if (start[j] == '\0' && (str[i] == ' ' || str[i] == '\0'))
-		return (true);
 	return (false);
 }
 

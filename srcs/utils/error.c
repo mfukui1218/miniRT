@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 14:58:35 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:34:27 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 
 void	error_message(int eroor)
 {
-	if (eroor == ALLOCATE)
+	if (eroor == MLX)
+		printf("Error\nMLX error\n");
+	else if (eroor == WIN)
+		printf("Error\nWindow error\n");
+	else if (eroor == ALLOCATE)
 		printf("Error\nAllocation error\n");
 	else if (eroor == OPEN)
 		printf("Error\nFile open error\n");
-	else if (eroor == COORDINATE_RT)
+	else if (eroor == CAMERA)
+		printf("This cause is  camera format\n");
+	else if (eroor == AMBIENT)
+		printf("This cause is ambient format\n");
+	else if (eroor == LIGHT)
+		printf("This cause is light format\n");
+	else if (eroor == OBJECT)
+		printf("This cause is object format\n");
+	else if (eroor == COORD_RT)
 		printf("Error\nInvalid coordinate format\n");
-	else if (eroor == COORDINATE_RANGE)
+	else if (eroor == COORD_RANGE)
 		printf("Error\nCoordinate out of range\n");
 	else if (eroor == BRIGHTNESS_RT)
 		printf("Error\nInvalid brightness format\n");
@@ -52,6 +64,5 @@ void	error_message(int eroor)
 		printf("Error\nAmbient out of range\n");
 	else
 		printf("Error\nUnknown error\n");
-	exit(0);
 }
 

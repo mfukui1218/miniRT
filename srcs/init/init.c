@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:00:34 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 13:33:14 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 13:59:44 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_object(t_object *object)
 	object->type = 0;
 	object->position = (t_vector){0, 0, 0};
 	object->orientation = (t_vector){0, 0, 0};
-	object->color = (t_color){255, 255, 255};
+	object->color = (t_color){0, 0, 0};
 	object->radius = 0;
 	object->height = 0;
 }

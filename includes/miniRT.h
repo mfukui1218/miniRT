@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 18:51:28 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:58:45 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,16 @@ typedef struct s_ambient	t_ambient;
 
 typedef struct s_color
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
+	int	r;
+	int	g;
+	int	b;
 }	t_color;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 typedef struct rt
 {
@@ -48,26 +54,26 @@ typedef struct rt
 	t_camera	*camera;
 	t_ambient	*ambient;
 	t_light		*light;
-	t_object	*object;
+	t_list		*object;
 }	t_rt;
 
 typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	orientation;
-	double		fov;
+	float		fov;
 }	t_camera;
 
 typedef struct s_ambient
 {
-	double		brightness;
+	float		brightness;
 	t_color		color;
 }	t_ambient;
 
 typedef struct s_light
 {
 	t_vector	position;
-	double		brightness;
+	float		brightness;
 	t_color		color;
 }	t_light;
 
@@ -77,16 +83,22 @@ typedef struct s_object
 	t_vector	position;
 	t_vector	orientation;
 	t_color		color;
-	double		radius;
-	double		height;
+	float		radius;
+	float		height;
 }	t_object;
 
 typedef enum error
 {
-	ALLOCATE = 1,
+	MLX = 1,
+	WIN,
+	ALLOCATE,
 	OPEN,
-	COORDINATE_RT,
-	COORDINATE_RANGE,
+	CAMERA,
+	AMBIENT,
+	LIGHT,
+	OBJECT,
+	COORD_RT,
+	COORD_RANGE,
 	BRIGHTNESS_RT,
 	BRIGHTNESS_RANGE,
 	COLOR_RT,
@@ -116,11 +128,14 @@ void	init_color(t_color *color);
 //set
 bool	parse_rt(t_rt *rt, char *file_name);
 bool	parse_txt(t_rt *rt, char *file_name);
-bool	parse_camera(t_rt *rt, char *line);
-bool	parse_ambient(t_rt *rt, char *line);
-bool	parse_light(t_rt *rt, char *line);
-bool	parse_object(t_rt *rt, char *line);
-bool	parse_color(t_rt *rt, char *line, size_t *j);
+bool	parse_camera(t_rt *rt);
+bool	parse_ambient(t_rt *rt);
+bool	parse_light(t_rt *rt);
+bool	parse_object(t_rt *rt);
+bool	parse_and_add_object(t_rt *rt, char *line, bool (*parse_func)(t_object *, char *));
+bool	parse_sphere(t_object *obj, char *line);
+bool	parse_plane(t_object *obj, char *line);
+bool	parse_cylinder(t_object *obj, char *line);
 
 
 //error
@@ -134,28 +149,33 @@ float	ft_atof(char *str);
 int		has_one_info(char **rt, char *str);
 int		has_object_info(char **rt);
 size_t	find_line_str(char **rt, char *start);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstnew(void *new);
+t_list	*ft_lstlast(t_list *lst);
 
 //condition
 bool	is_valid_condition(char **rt);
 bool	parse_and_check(char *str, size_t *j, bool (*check)(char *, size_t *));
-bool	is_valid_camera(char **rt);
-bool	is_valid_ambient(char **rt);
-bool	is_valid_light(char **rt);
-bool	is_valid_object(char **rt);
-bool	is_valid_coordinate(char *str, size_t *j);
-bool	is_valid_brightness(char *str, size_t *j);
-bool	is_valid_color(char *str, size_t *j);
-bool	is_valid_fov(char *str, size_t *j);
-bool	is_valid_vector(char *str, size_t *j);
-bool	is_valid_sphere(char *str);
-bool	is_valid_plane(char *str);
-bool	is_valid_cylinder(char *str);
 
 bool	check_three_range(char *str, int min, int max);
 bool	check_number_with_comma(char *str, size_t *j);
 bool	check_last_number(char *str, size_t *j);
 
+//parse
 
+bool	set_coordinate(void *vec, char *str, size_t *j);
+bool	set_vector(void *vec, char *str, size_t *j);
+bool	set_fov(void *fov, char *str, size_t *j);
+bool	skip_and_set(char *line, size_t *j, void *dst, bool (*func)(void *, char *, size_t *));
+bool	set_brightness(void *brightness, char *str, size_t *j);
+bool	set_color(void *color, char *str, size_t *j);
+bool	set_diameter(void *object, char *str, size_t *j);
+bool	set_radius(void *radius, char *str, size_t *j);
+bool	set_height(void *height, char *str, size_t *j);
+int 	ft_atoi_index(char *str, size_t *j);
+float 	ft_atof_index(char *str, size_t *j);
+bool	check_range_int(int value, int min, int max);
+bool	check_range_float(float value, float min, float max);
 
 //free
 void	free_rt(t_rt *rt);
