@@ -11,6 +11,7 @@ SRCS := main.c \
 		free.c \
 		condition_utils.c \
 		condition_utils2.c \
+		parse_main.c \
 		parse_camera.c \
 		parse_ambient.c \
 		parse_object.c \

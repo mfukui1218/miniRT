@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 14:53:21 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:58:45 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ bool	parse_camera(t_rt *rt);
 bool	parse_ambient(t_rt *rt);
 bool	parse_light(t_rt *rt);
 bool	parse_object(t_rt *rt);
+bool	parse_and_add_object(t_rt *rt, char *line, bool (*parse_func)(t_object *, char *));
 bool	parse_sphere(t_object *obj, char *line);
 bool	parse_plane(t_object *obj, char *line);
 bool	parse_cylinder(t_object *obj, char *line);

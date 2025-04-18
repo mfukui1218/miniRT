@@ -6,16 +6,30 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:39:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 14:45:15 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 15:00:35 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+bool	parse_and_add_object(t_rt *rt, char *line,
+	bool (*parse_func)(t_object *, char *))
+{
+	t_object *obj;
+
+	obj = malloc(sizeof(t_object));
+	if (!obj)
+		return (error_message(ALLOCATE), false);
+	init_object(obj);
+	if (!parse_func(obj, line))
+		return (false);
+	ft_lstadd_back(&rt->object, ft_lstnew(obj));
+	return (true);
+}
+
 bool	parse_object(t_rt *rt)
 {
-	size_t		i;
-	t_object	*obj;
+	size_t	i;
 
 	rt->object = NULL;
 	i = 0;
@@ -23,39 +37,23 @@ bool	parse_object(t_rt *rt)
 	{
 		if (is_start_str(rt->rt[i], "sp"))
 		{
-			obj = malloc(sizeof(t_object));
-			if (!obj)
-				return (error_message(ALLOCATE), false);
-			init_object(obj);
-			if (!parse_sphere(obj, rt->rt[i]))
+			if (!parse_and_add_object(rt, rt->rt[i], parse_sphere))
 				return (false);
-			ft_lstadd_back(&rt->object, ft_lstnew(obj));
 		}
 		else if (is_start_str(rt->rt[i], "pl"))
 		{
-			obj = malloc(sizeof(t_object));
-			if (!obj)
-				return (error_message(ALLOCATE), false);
-			init_object(obj);
-			if (!parse_plane(obj, rt->rt[i]))
+			if (!parse_and_add_object(rt, rt->rt[i], parse_plane))
 				return (false);
-			ft_lstadd_back(&rt->object, ft_lstnew(obj));
 		}
 		else if (is_start_str(rt->rt[i], "cy"))
 		{
-			obj = malloc(sizeof(t_object));
-			if (!obj)
-				return (error_message(ALLOCATE), false);
-			init_object(obj);
-			if (!parse_cylinder(obj, rt->rt[i]))
+			if (!parse_and_add_object(rt, rt->rt[i], parse_cylinder))
 				return (false);
-			ft_lstadd_back(&rt->object, ft_lstnew(obj));
 		}
 		i++;
 	}
 	return (true);
 }
-
 
 bool	parse_sphere(t_object *obj, char *line)
 {
