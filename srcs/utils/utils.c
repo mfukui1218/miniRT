@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:43 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/17 23:21:44 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:53:05 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,38 @@ void	inclement_ij(size_t *i, size_t *j)
 	(*j)++;
 }
 
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (!lst)
+		return ;
+	if (!*lst)
+	{
+		*lst = ft_lstnew((void *)new);
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = ft_lstnew((void *)new);
+}
+
+t_list	*ft_lstnew(void *new)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = new;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:39:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 14:02:59 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:45:15 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,52 @@
 bool	parse_object(t_rt *rt)
 {
 	size_t		i;
+	t_object	*obj;
 
-	rt->object = malloc(sizeof(t_object));
-	if (!rt->object)
-		return (error_message(ALLOCATE), false);
-	rt->object->content = malloc(sizeof(t_object));
-	if (!rt->object->content)
-		return (error_message(ALLOCATE), false);
-	init_object((t_object *)(rt->object->content));
+	rt->object = NULL;
 	i = 0;
 	while (rt->rt[i])
 	{
 		if (is_start_str(rt->rt[i], "sp"))
-			if (!parse_sphere(rt, rt->rt[i]))
+		{
+			obj = malloc(sizeof(t_object));
+			if (!obj)
+				return (error_message(ALLOCATE), false);
+			init_object(obj);
+			if (!parse_sphere(obj, rt->rt[i]))
 				return (false);
-		if (is_start_str(rt->rt[i], "pl"))
-			if (!parse_plane(rt, rt->rt[i]))
+			ft_lstadd_back(&rt->object, ft_lstnew(obj));
+		}
+		else if (is_start_str(rt->rt[i], "pl"))
+		{
+			obj = malloc(sizeof(t_object));
+			if (!obj)
+				return (error_message(ALLOCATE), false);
+			init_object(obj);
+			if (!parse_plane(obj, rt->rt[i]))
 				return (false);
-		if (is_start_str(rt->rt[i], "cy"))
-			if (!parse_cylinder(rt, rt->rt[i]))
+			ft_lstadd_back(&rt->object, ft_lstnew(obj));
+		}
+		else if (is_start_str(rt->rt[i], "cy"))
+		{
+			obj = malloc(sizeof(t_object));
+			if (!obj)
+				return (error_message(ALLOCATE), false);
+			init_object(obj);
+			if (!parse_cylinder(obj, rt->rt[i]))
 				return (false);
+			ft_lstadd_back(&rt->object, ft_lstnew(obj));
+		}
 		i++;
 	}
 	return (true);
 }
 
-bool	parse_sphere(t_rt *rt, char *line)
+
+bool	parse_sphere(t_object *obj, char *line)
 {
 	size_t	j;
-	t_object	*obj;
 	
-	obj = (t_object *)(rt->object->content);
 	j = skip_space(line) + 2;
 	if (!skip_and_set(line, &j, &(obj->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
@@ -56,12 +71,10 @@ bool	parse_sphere(t_rt *rt, char *line)
 	return (true);
 }
 
-bool	parse_plane(t_rt *rt, char *line)
+bool	parse_plane(t_object *obj, char *line)
 {
 	size_t	j;
-	t_object	*obj;
 
-	obj = (t_object *)(rt->object->content);
 	j = skip_space(line) + 2;
 	if (!skip_and_set(line, &j, &(obj->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
@@ -72,12 +85,10 @@ bool	parse_plane(t_rt *rt, char *line)
 	return (true);
 }
 
-bool	parse_cylinder(t_rt *rt, char *line)
+bool	parse_cylinder(t_object *obj, char *line)
 {
 	size_t	j;
-	t_object	*obj;
 
-	obj = (t_object *)(rt->object->content);
 	j = skip_space(line) + 2;
 	if (!skip_and_set(line, &j, &(obj->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);

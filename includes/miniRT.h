@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 03:24:44 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:53:21 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,9 @@ bool	parse_camera(t_rt *rt);
 bool	parse_ambient(t_rt *rt);
 bool	parse_light(t_rt *rt);
 bool	parse_object(t_rt *rt);
-bool	parse_sphere(t_rt *rt, char *line);
-bool	parse_plane(t_rt *rt, char *line);
-bool	parse_cylinder(t_rt *rt, char *line);
+bool	parse_sphere(t_object *obj, char *line);
+bool	parse_plane(t_object *obj, char *line);
+bool	parse_cylinder(t_object *obj, char *line);
 
 
 //error
@@ -148,6 +148,9 @@ float	ft_atof(char *str);
 int		has_one_info(char **rt, char *str);
 int		has_object_info(char **rt);
 size_t	find_line_str(char **rt, char *start);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstnew(void *new);
+t_list	*ft_lstlast(t_list *lst);
 
 //condition
 bool	is_valid_condition(char **rt);
