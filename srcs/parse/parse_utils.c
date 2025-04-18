@@ -22,13 +22,15 @@ int ft_atoi_index(char *str, size_t *i)
 	return (result * sign);
 }
 
-bool	skip_and_set(char *line, size_t *i, void *dst, bool (*func)(void *, char *, size_t *))
+bool	skip_and_set(char *line, size_t *j, void *dst, bool (*func)(void *, char *, size_t *))
 {
-	*i += skip_space(line + *i);
-	return (func(dst, line, i));
+	*j += skip_space(line + *j);
+	if (!func(dst, line, j))
+		return (false);
+	return (true);
 }
 
-float   ft_atof_index(char *str, size_t *i)
+float   ft_atof_index(char *str, size_t *j)
 {
 	float	result;
 	float	fraction;
@@ -39,26 +41,26 @@ float   ft_atof_index(char *str, size_t *i)
 	sign = 1;
 	divisor = 10;
 	fraction = 0.0f;
-	*i += skip_space(str);
-	if (str[*i] == '+' || str[*i] == '-')
+	*j += skip_space(str + *j);
+	if (str[*j] == '+' || str[*j] == '-')
 	{
-		if (str[*i] == '-')
+		if (str[*j] == '-')
 			sign = -1;
-		(*i)++;
+		(*j)++;
 	}
-	while (str[*i] >= '0' && str[*i] <= '9')
+	while (str[*j] >= '0' && str[*j] <= '9')
 	{
-		result = result * 10 + (str[*i] - '0');
-		(*i)++;
+		result = result * 10 + (str[*j] - '0');
+		(*j)++;
 	}
-	if (str[*i] == '.')
+	if (str[*j] == '.')
 	{
-		(*i)++;
-		while (str[*i] >= '0' && str[*i] <= '9')
+		(*j)++;
+		while (str[*j] >= '0' && str[*j] <= '9')
 		{
-			fraction += (float)(str[*i] - '0') / divisor;
+			fraction += (float)(str[*j] - '0') / divisor;
 			divisor *= 10;
-			(*i)++;
+			(*j)++;
 		}
 	}
 	result += fraction;

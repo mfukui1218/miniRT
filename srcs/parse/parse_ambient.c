@@ -15,5 +15,5 @@ bool	parse_ambient(t_rt *rt)
 		return (false);
 	if (!skip_and_set(rt->rt[i], &j, &(rt->ambient->color), (bool (*)(void *, char *, size_t *))set_color))
 		return (false);
-	return (true);
+	return (true);  
 }

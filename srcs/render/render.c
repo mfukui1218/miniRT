@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 01:14:06 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:31:34 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,17 @@ bool	parse_rt(t_rt *rt, char *file_name)
 	{
 		if (is_start_str(rt->rt[i], "C"))
 			if (!parse_camera(rt))
-				return (false);
+				return (error_message(CAMERA), false);	
 		if (is_start_str(rt->rt[i], "A"))
 			if (!parse_ambient(rt))
-				return (false);
+				return (error_message(AMBIENT), false);
 		if (is_start_str(rt->rt[i], "L"))
 			if (!parse_light(rt))
-				return (false);
-		if (is_start_str(rt->rt[i], "sp"))
-			if (!parse_object(rt))
-				return (false);
-		if (is_start_str(rt->rt[i], "pl"))
-			if (!parse_object(rt))
-				return (false);
-		if (is_start_str(rt->rt[i], "cy"))
-			if (!parse_object(rt))
-				return (false);
+				return (error_message(LIGHT), false);
 		i++;
 	}
+	if (!parse_object(rt))
+		return (error_message(OBJECT), false);
 	return (true);
 }
 

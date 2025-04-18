@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 01:35:41 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 03:24:44 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ typedef struct s_ambient	t_ambient;
 
 typedef struct s_color
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
+	int	r;
+	int	g;
+	int	b;
 }	t_color;
 
 typedef struct s_list
@@ -61,19 +61,19 @@ typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	orientation;
-	double		fov;
+	float		fov;
 }	t_camera;
 
 typedef struct s_ambient
 {
-	double		brightness;
+	float		brightness;
 	t_color		color;
 }	t_ambient;
 
 typedef struct s_light
 {
 	t_vector	position;
-	double		brightness;
+	float		brightness;
 	t_color		color;
 }	t_light;
 
@@ -83,8 +83,8 @@ typedef struct s_object
 	t_vector	position;
 	t_vector	orientation;
 	t_color		color;
-	double		radius;
-	double		height;
+	float		radius;
+	float		height;
 }	t_object;
 
 typedef enum error
@@ -93,8 +93,12 @@ typedef enum error
 	WIN,
 	ALLOCATE,
 	OPEN,
-	COORDINATE_RT,
-	COORDINATE_RANGE,
+	CAMERA,
+	AMBIENT,
+	LIGHT,
+	OBJECT,
+	COORD_RT,
+	COORD_RANGE,
 	BRIGHTNESS_RT,
 	BRIGHTNESS_RANGE,
 	COLOR_RT,
@@ -128,6 +132,9 @@ bool	parse_camera(t_rt *rt);
 bool	parse_ambient(t_rt *rt);
 bool	parse_light(t_rt *rt);
 bool	parse_object(t_rt *rt);
+bool	parse_sphere(t_rt *rt, char *line);
+bool	parse_plane(t_rt *rt, char *line);
+bool	parse_cylinder(t_rt *rt, char *line);
 
 
 //error
@@ -152,15 +159,17 @@ bool	check_last_number(char *str, size_t *j);
 
 //parse
 
-bool	set_coordinate(t_vector *vec, char *str, size_t *i);
-bool	set_vector(t_vector *vec, char *str, size_t *i);
-bool	set_fov(int *fov, char *str, size_t *i);
-bool	skip_and_set(char *line, size_t *i, void *dst, bool (*func)(void *, char *, size_t *));
-bool	set_brightness(float *brightness, char *str, size_t *i);
-bool	set_color(t_color *color, char *str, size_t *i);
-bool	set_diameter(t_object *object, char *str, size_t *i);
-int 	ft_atoi_index(char *str, size_t *i);
-float 	ft_atof_index(char *str, size_t *i);
+bool	set_coordinate(void *vec, char *str, size_t *j);
+bool	set_vector(void *vec, char *str, size_t *j);
+bool	set_fov(void *fov, char *str, size_t *j);
+bool	skip_and_set(char *line, size_t *j, void *dst, bool (*func)(void *, char *, size_t *));
+bool	set_brightness(void *brightness, char *str, size_t *j);
+bool	set_color(void *color, char *str, size_t *j);
+bool	set_diameter(void *object, char *str, size_t *j);
+bool	set_radius(void *radius, char *str, size_t *j);
+bool	set_height(void *height, char *str, size_t *j);
+int 	ft_atoi_index(char *str, size_t *j);
+float 	ft_atof_index(char *str, size_t *j);
 bool	check_range_int(int value, int min, int max);
 bool	check_range_float(float value, float min, float max);
 

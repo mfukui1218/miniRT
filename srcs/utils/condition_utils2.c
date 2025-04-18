@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:32:22 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/17 17:15:35 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:15:43 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ bool	check_number_with_comma(char *str, size_t *j)
 		return (false);
 	while ('0' <= str[*j] && str[*j] <= '9')
 		(*j)++;
+	if (str[*j] == '.')
+	{
+		(*j)++;
+		if (!('0' <= str[*j] && str[*j] <= '9'))
+			return (false);
+		while ('0' <= str[*j] && str[*j] <= '9')
+			(*j)++;
+	}
 	if (str[*j] != ',')
 		return (false);
 	(*j)++;
@@ -34,7 +42,15 @@ bool	check_last_number(char *str, size_t *j)
 		return (false);
 	while ('0' <= str[*j] && str[*j] <= '9')
 		(*j)++;
-	if (str[*j] && str[*j] != ' ' && str[*j] != '\t')
+	if (str[*j] == '.')
+	{
+		(*j)++;
+		if (!('0' <= str[*j] && str[*j] <= '9'))
+			return (false);
+		while ('0' <= str[*j] && str[*j] <= '9')
+			(*j)++;
+	}
+	if (str[*j] != '\n' && str[*j] != ' ' && str[*j] != '\t' && str[*j] != '\0')
 		return (false);
 	return (true);
 }

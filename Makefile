@@ -13,6 +13,7 @@ SRCS := main.c \
 		condition_utils2.c \
 		parse_camera.c \
 		parse_ambient.c \
+		parse_object.c \
 		parse_light.c \
 		parse_setters.c \
 		parse_utils.c \

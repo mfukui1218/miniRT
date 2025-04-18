@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:39:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 01:45:47 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:02:59 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 bool	parse_object(t_rt *rt)
 {
 	size_t		i;
-	size_t		j;
 
 	rt->object = malloc(sizeof(t_object));
 	if (!rt->object)
 		return (error_message(ALLOCATE), false);
-	init_object(rt->object);
+	rt->object->content = malloc(sizeof(t_object));
+	if (!rt->object->content)
+		return (error_message(ALLOCATE), false);
+	init_object((t_object *)(rt->object->content));
 	i = 0;
 	while (rt->rt[i])
 	{
@@ -44,7 +46,7 @@ bool	parse_sphere(t_rt *rt, char *line)
 	t_object	*obj;
 	
 	obj = (t_object *)(rt->object->content);
-	j = skip_space(line) + 1;
+	j = skip_space(line) + 2;
 	if (!skip_and_set(line, &j, &(obj->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
 	if (!skip_and_set(line, &j, &(obj->radius), (bool (*)(void *, char *, size_t *))set_radius))
@@ -60,7 +62,7 @@ bool	parse_plane(t_rt *rt, char *line)
 	t_object	*obj;
 
 	obj = (t_object *)(rt->object->content);
-	j = skip_space(line) + 1;
+	j = skip_space(line) + 2;
 	if (!skip_and_set(line, &j, &(obj->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
 	if (!skip_and_set(line, &j, &(obj->orientation), (bool (*)(void *, char *, size_t *))set_vector))
@@ -76,7 +78,7 @@ bool	parse_cylinder(t_rt *rt, char *line)
 	t_object	*obj;
 
 	obj = (t_object *)(rt->object->content);
-	j = skip_space(line) + 1;
+	j = skip_space(line) + 2;
 	if (!skip_and_set(line, &j, &(obj->position), (bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
 	if (!skip_and_set(line, &j, &(obj->orientation), (bool (*)(void *, char *, size_t *))set_vector))
