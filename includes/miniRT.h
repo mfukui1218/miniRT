@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:40:31 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 22:20:20 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	orientation;
-	float		fov;
+	int			fov;
 }	t_camera;
 
 typedef struct s_ambient
@@ -214,5 +214,21 @@ void	free_color(t_color *color);
 void	free_split(char **split);
 
 void line(void);
+
+//printer
+void	rt_print_ambient(const t_ambient *ambient);
+void	rt_print_camera(const t_camera *camera);
+void	rt_print_color(const t_color *color);
+void	rt_print_cylinder(const t_cylinder *cylinder);
+void	rt_print_light(const t_light *light);
+void	rt_print_list(const t_list *lst, void (*f)(const void *));
+void	rt_print_ntp(const void **ntp, void (*f)(const void *));
+void	rt_print_obj_type(const t_object_type *type);
+void	rt_print_object(const t_object *obj);
+void	rt_print_plane(const t_plane *plane);
+void	rt_print_rt(const t_rt *rt);
+void	rt_print_sphere(const t_sphere *sphere);
+void	rt_print_str(const char *str);
+void	rt_print_vector(const t_vector *vector);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:29:55 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 16:49:48 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 22:13:51 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ bool	parse_camera(t_rt *rt)
 	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->fov),
 			(bool (*)(void *, char *, size_t *))set_fov))
 		return (false);
+	printf("fov: %d\n", rt->camera->fov);
 	return (true);
 }

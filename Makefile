@@ -53,6 +53,10 @@ $(MLX_LIB):
 # Utilities
 # ================================
 
+debug: CFLAGS += -g -O0
+debug: LDFLAGS += -g -O0
+debug:
+
 clean:
 	$(RM) -r $(OBJ_DIR)
 	$(MAKE) clean -C $(LIBFT_DIR)
