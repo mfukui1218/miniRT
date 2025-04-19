@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 01:23:19 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:28:53 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,13 +138,13 @@ typedef enum error
 # define MAX_TXT_HEIGHT	200
 # define SCREEN_HEIGHT	800
 # define SCREEN_WIDTH	1000
-# define RED "\e[31m"
-# define GREEN "\e[32m"
-# define YELLOW "\e[33m"
-# define BLUE "\e[34m"
-# define CLC "\e[0m"
-# define FMT_24COLOR "\e[38;2;%d;%d;%dm"
-# define INDENT_SIZE 4
+# define RED			"\e[31m"
+# define GREEN			"\e[32m"
+# define YELLOW			"\e[33m"
+# define BLUE			"\e[34m"
+# define CLC			"\e[0m"
+# define FMT_24COLOR	"\e[38;2;%d;%d;%dm"
+# define INDENT_SIZE	4
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
