@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:59:05 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 21:40:31 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,6 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 typedef struct rt
 {
@@ -150,6 +144,9 @@ void	init_light(t_light *light);
 void	init_object(t_object *object);
 void	init_vector(t_vector *vector);
 void	init_color(t_color *color);
+void	init_sphere(t_sphere *sphere);
+void	init_plane(t_plane *plane);
+void	init_cylinder(t_cylinder *cylinder);
 
 //set
 bool	parse_rt(t_rt *rt, char *file_name);
@@ -158,22 +155,29 @@ bool	parse_camera(t_rt *rt);
 bool	parse_ambient(t_rt *rt);
 bool	parse_light(t_rt *rt);
 bool	parse_object(t_rt *rt);
-bool	parse_and_add_object(t_rt *rt, char *line,
-			bool (*parse_func)(t_object *, char *));
 bool	parse_sphere(t_object *obj, char *line);
 bool	parse_plane(t_object *obj, char *line);
 bool	parse_cylinder(t_object *obj, char *line);
 
 //error
 void	error_message(int error);
+bool	error_ambient(int error);
+bool	error_brightness(int error);
+bool	error_color(int error);
+bool	error_coordinate(int error);
+bool	error_cylinder(int error);
+bool	error_radius(int error);
+bool	error_vector(int error);
+bool	error_fov(int error);
+bool	error_message_common(int error);
+bool	error_message_parse(int error);
+bool	error_message_value(int error);
 
 //utils
 size_t	skip_space(char *str);
 void	inclement_ij(size_t *i, size_t *j);
 bool	is_start_str(char *str, char *start);
 float	ft_atof_index_dev(char *str, size_t *j, bool dev);
-int		has_one_info(char **rt, char *str);
-int		has_object_info(char **rt);
 size_t	find_line_str(char **rt, char *start);
 
 //condition
@@ -199,6 +203,7 @@ bool	check_range_float(float value, float min, float max);
 
 //free
 void	free_rt(t_rt *rt);
+void	free_txt(char **rt);
 void	free_camera(t_camera *camera);
 void	free_ambient(t_ambient *ambient);
 void	free_light(t_light *light);
