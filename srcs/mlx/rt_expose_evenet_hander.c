@@ -15,9 +15,7 @@
 
 int	rt_expose_event_handler(t_rt *rt)
 {
-	// mlx_clear_window(rt->mlx, rt->win);
-	// mlx_put_image_to_window(rt->mlx, rt->win, rt->img, 0, 0);
-	(void)rt;
+	render(rt);
 	printf("Expose event triggered\n");
 	return (0);
 }

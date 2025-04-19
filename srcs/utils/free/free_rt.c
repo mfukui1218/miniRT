@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 18:36:08 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/20 06:46:19 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	free_rt(t_rt *rt)
 {
 	if (!rt)
 		return ;
+	if (rt->screen)
+	{
+		rt_destroy_image(rt->mlx, rt->screen);
+		rt->screen = NULL;
+	}
 	if (rt->win)
 	{
 		mlx_destroy_window(rt->mlx, rt->win);
