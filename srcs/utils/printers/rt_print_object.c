@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:37:38 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/20 01:23:58 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:35:53 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rt_print_object(const t_object *obj)
 		return ;
 	rt_print_str("type: ");
 	rt_print_object_type(&obj->type);
-	rt_print_indent(1);
+	rt_print_indent(ADD_INDENT);
 	rt_print_str("object:\n");
 	if (obj->type == SPHERE)
 		rt_print_with_indent((t_print_func)rt_print_sphere, obj->object);
@@ -28,5 +28,5 @@ void	rt_print_object(const t_object *obj)
 		rt_print_with_indent((t_print_func)rt_print_cylinder, obj->object);
 	rt_print_str("color: ");
 	rt_print_color(&obj->color);
-	rt_print_indent(-1);
+	rt_print_indent(SUB_INDENT);
 }

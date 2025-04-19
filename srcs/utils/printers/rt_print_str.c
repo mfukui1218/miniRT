@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:55:41 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/20 01:04:20 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:34:51 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void	rt_print_str(const char *str)
 {
-	rt_print_indent(0);
+	rt_print_indent(PRINT_INDENT);
 	printf("%s", str);
 }

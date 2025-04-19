@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 01:28:53 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:38:19 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@ typedef enum error
 # define CLC			"\e[0m"
 # define FMT_24COLOR	"\e[38;2;%d;%d;%dm"
 # define INDENT_SIZE	4
+# define ADD_INDENT		1
+# define SUB_INDENT		-1
+# define PRINT_INDENT	0
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);

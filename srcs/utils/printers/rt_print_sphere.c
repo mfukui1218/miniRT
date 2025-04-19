@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:44:37 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/20 01:12:56 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:36:29 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	rt_print_sphere(const t_sphere *sphere)
 		return ;
 	rt_print_str("position: ");
 	rt_print_vector(&sphere->position);
-	rt_print_indent(0);
+	rt_print_indent(PRINT_INDENT);
 	printf("radius: %f\n", sphere->radius);
 }

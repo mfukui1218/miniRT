@@ -14,7 +14,7 @@
 
 void	rt_print_with_indent(t_print_func f, const void *arg)
 {
-	rt_print_indent(1);
+	rt_print_indent(ADD_INDENT);
 	f(arg);
-	rt_print_indent(-1);
+	rt_print_indent(SUB_INDENT);
 }

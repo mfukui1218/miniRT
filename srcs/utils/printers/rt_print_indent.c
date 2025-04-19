@@ -21,7 +21,7 @@ void	rt_print_indent(int indent)
 {
 	static int	indent_level;
 
-	if (indent != 0)
+	if (indent != PRINT_INDENT)
 	{
 		indent_level += indent;
 		return ;
