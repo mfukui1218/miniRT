@@ -1,26 +1,9 @@
 NAME        := miniRT
 
 # ソースファイル（パス付き）
-SRCS := main.c \
-        init.c \
-        gnl/get_next_line.c \
-        gnl/get_next_line_utils.c \
-		render.c \
-		error.c \
-		utils.c \
-		free.c \
-		condition_utils.c \
-		condition_utils2.c \
-		parse_main.c \
-		parse_camera.c \
-		parse_ambient.c \
-		parse_object.c \
-		parse_light.c \
-		parse_setters.c \
-		parse_utils.c \
+SRCS = $(shell find . -name "*.c" -not -path "*$(LIBFT_DIR)/*" -not -path "*$(MLX_DIR)/*")
 
 # ディレクトリ設定
-SRC_DIR     := ./srcs
 OBJ_DIR     := ./obj
 LIBFT_DIR   := libft
 GNL_DIR   := gnl
@@ -42,18 +25,6 @@ INC         := -Iincludes -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(GNL_DIR)
 # リンクオプション
 LD_FLAGS    := -L$(LIBFT_DIR) -L$(MLX_DIR) -L$(GNL_DIR)
 LD_LIBS     := $(LIBFT_LIB) $(MLX_LIB) -lXext -lX11 -lm -lz -lreadline
-
-# vpath でソース検索ディレクトリ設定
-vpath %.c \
-	. \
-	$(SRC_DIR) \
-	$(SRC_DIR)/main \
-	$(SRC_DIR)/init \
-	$(SRC_DIR)/gnl \
-	$(SRC_DIR)/render \
-	$(SRC_DIR)/utils \
-	$(SRC_DIR)/parse \
-	./gnl
 
 # ================================
 # Main targets
