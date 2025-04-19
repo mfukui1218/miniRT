@@ -6,16 +6,35 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 06:46:19 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 07:26:48 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+static void	free_relational_mlx(t_rt *rt);
+
 void	free_rt(t_rt *rt)
 {
 	if (!rt)
 		return ;
+	free_relational_mlx(rt);
+	if (rt->rt)
+		free_txt(rt->rt);
+	if (rt->camera)
+		free_camera(rt->camera);
+	if (rt->ambient)
+		free_ambient(rt->ambient);
+	if (rt->light)
+		free_light(rt->light);
+	if (rt->object)
+		free_object_list(&rt->object);
+	free(rt);
+	rt = NULL;
+}
+
+static void	free_relational_mlx(t_rt *rt)
+{
 	if (rt->screen)
 	{
 		rt_destroy_image(rt->mlx, rt->screen);
@@ -32,16 +51,4 @@ void	free_rt(t_rt *rt)
 		free(rt->mlx);
 		rt->mlx = NULL;
 	}
-	if (rt->rt)
-		free_txt(rt->rt);
-	if (rt->camera)
-		free_camera(rt->camera);
-	if (rt->ambient)
-		free_ambient(rt->ambient);
-	if (rt->light)
-		free_light(rt->light);
-	if (rt->object)
-		free_object_list(&rt->object);
-	free(rt);
-	rt = NULL;
 }
