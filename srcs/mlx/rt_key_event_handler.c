@@ -20,6 +20,5 @@ int	rt_key_event_handler(int keycode, t_rt *rt)
 		free_rt(rt);
 		exit(EXIT_SUCCESS);
 	}
-	printf("Key event triggered: %d\n", keycode);
 	return (0);
 }

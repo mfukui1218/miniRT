@@ -16,6 +16,5 @@
 int	rt_expose_event_handler(t_rt *rt)
 {
 	render(rt);
-	printf("Expose event triggered\n");
 	return (0);
 }

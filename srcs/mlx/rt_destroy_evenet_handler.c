@@ -16,7 +16,6 @@
 int	rt_destroy_event_handler(t_rt *rt)
 {
 	free_rt(rt);
-	printf("Destroy event triggered\n");
 	exit(EXIT_SUCCESS);
 	return (0);
 }
