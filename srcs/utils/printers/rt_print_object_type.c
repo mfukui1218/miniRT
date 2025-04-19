@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_print_obj_type.c                                :+:      :+:    :+:   */
+/*   rt_print_object_type.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 17:40:31 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/19 22:24:52 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/20 01:23:41 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/20 01:23:42 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	rt_print_obj_type(const t_object_type *type)
+void	rt_print_object_type(const t_object_type *type)
 {
 	if (type == NULL)
 		return ;

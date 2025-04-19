@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 00:59:39 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:23:19 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,7 @@ void	rt_print_cylinder(const t_cylinder *cylinder);
 void	rt_print_light(const t_light *light);
 void	rt_print_list(const t_list *lst, void (*f)(const void *));
 void	rt_print_ntp(const void **ntp, void (*f)(const void *));
-void	rt_print_obj_type(const t_object_type *type);
+void	rt_print_object_type(const t_object_type *type);
 void	rt_print_object(const t_object *obj);
 void	rt_print_plane(const t_plane *plane);
 void	rt_print_rt(const t_rt *rt);

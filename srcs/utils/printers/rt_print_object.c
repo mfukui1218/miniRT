@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:37:38 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/20 01:16:24 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 01:23:58 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rt_print_object(const t_object *obj)
 	if (obj == NULL)
 		return ;
 	rt_print_str("type: ");
-	rt_print_obj_type(&obj->type);
+	rt_print_object_type(&obj->type);
 	rt_print_indent(1);
 	rt_print_str("object:\n");
 	if (obj->type == SPHERE)
