@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 15:05:01 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 18:36:08 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	free_rt(t_rt *rt)
 	if (rt->win)
 	{
 		mlx_destroy_window(rt->mlx, rt->win);
-		free(rt->win);
 		rt->win = NULL;
 	}
 	if (rt->mlx)
@@ -28,6 +27,8 @@ void	free_rt(t_rt *rt)
 		free(rt->mlx);
 		rt->mlx = NULL;
 	}
+	if (rt->rt)
+		free_txt(rt->rt);
 	if (rt->camera)
 		free_camera(rt->camera);
 	if (rt->ambient)
@@ -35,58 +36,7 @@ void	free_rt(t_rt *rt)
 	if (rt->light)
 		free_light(rt->light);
 	if (rt->object)
-		free_object(rt->object->content);
+		free_object_list(&rt->object);
 	free(rt);
 	rt = NULL;
-}
-
-void	free_camera(t_camera *camera)
-{
-	free(camera);
-	camera = NULL;
-}
-
-void	free_ambient(t_ambient *ambient)
-{
-	free(ambient);
-	ambient = NULL;
-}
-
-void	free_light(t_light *light)
-{
-	free(light);
-	light = NULL;
-}
-
-void	free_object(t_object *object)
-{
-	free(object);
-	object = NULL;
-}
-
-void	free_vector(t_vector *vector)
-{
-	free(vector);
-	vector = NULL;
-}
-
-void	free_color(t_color *color)
-{
-	free(color);
-	color = NULL;
-}
-
-void	free_split(char **split)
-{
-	size_t	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		split[i] = NULL;
-		i++;
-	}
-	free(split);
-	split = NULL;
 }

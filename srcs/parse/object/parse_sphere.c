@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_camera.c                                     :+:      :+:    :+:   */
+/*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 18:29:55 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 01:06:04 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/19 18:06:59 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 18:07:16 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	parse_camera(t_rt *rt)
+bool	parse_sphere(t_object *obj, char *line)
 {
-	size_t	i;
-	size_t	j;
+	size_t		j;
+	t_sphere	*sphere;
 
-	rt->camera = malloc(sizeof(t_camera));
-	if (!rt->camera)
+	obj->type = SPHERE;
+	sphere = malloc(sizeof(t_sphere));
+	if (!sphere)
 		return (error_message(ALLOCATE), false);
-	init_camera(rt->camera);
-	i = find_line_str(rt->rt, "C");
-	j = skip_space(rt->rt[i]) + 1;
-	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->position), (bool (*)(void *, char *, size_t *))set_coordinate))
+	init_sphere(sphere);
+	obj->object = sphere;
+	j = skip_space(line) + 2;
+	if (!skip_and_set(line, &j, &(sphere->position),
+			(bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
-	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->orientation), (bool (*)(void *, char *, size_t *))set_vector))
+	if (!skip_and_set(line, &j, &(sphere->radius),
+			(bool (*)(void *, char *, size_t *))set_radius))
 		return (false);
-	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->fov), (bool (*)(void *, char *, size_t *))set_fov))
+	if (!skip_and_set(line, &j, &(obj->color),
+			(bool (*)(void *, char *, size_t *))set_color))
 		return (false);
 	return (true);
 }

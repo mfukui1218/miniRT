@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient.c                                    :+:      :+:    :+:   */
+/*   parse_txt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:19:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 15:05:57 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/19 18:00:24 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 18:00:41 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	parse_ambient(t_rt *rt)
+bool	parse_txt(t_rt *rt, char *file_name)
 {
+	int		fd;
 	size_t	i;
-	size_t	j;
 
-	rt->ambient = malloc(sizeof(t_color));
-	if (!rt->ambient)
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		return (error_message(OPEN), false);
+	rt->rt = malloc(sizeof(char *) * MAX_TXT_HEIGHT + 1);
+	if (!rt->rt)
 		return (error_message(ALLOCATE), false);
-	init_ambient(rt->ambient);
-	i = find_line_str(rt->rt, "A");
-	j = skip_space(rt->rt[i]) + 1;
-	if (!skip_and_set(rt->rt[i], &j, &(rt->ambient->brightness), (bool (*)(void *, char *, size_t *))set_brightness))
-		return (false);
-	if (!skip_and_set(rt->rt[i], &j, &(rt->ambient->color), (bool (*)(void *, char *, size_t *))set_color))
-		return (false);
-	return (true);  
+	i = 0;
+	while (1)
+	{
+		rt->rt[i] = get_next_line(fd);
+		if (!rt->rt[i])
+			break ;
+		i++;
+	}
+	close(fd);
+	return (true);
 }
