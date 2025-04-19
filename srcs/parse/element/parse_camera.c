@@ -32,6 +32,5 @@ bool	parse_camera(t_rt *rt)
 	if (!skip_and_set(rt->rt[i], &j, &(rt->camera->fov),
 			(bool (*)(void *, char *, size_t *))set_fov))
 		return (false);
-	printf("fov: %d\n", rt->camera->fov);
 	return (true);
 }
