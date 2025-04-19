@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message_common.c                             :+:      :+:    :+:   */
+/*   skip_space.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:43:12 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/15 22:03:43 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 20:38:47 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	error_message_common(int err)
+size_t	skip_space(char *str)
 {
-	if (err == MLX)
-		printf("Error\nMLX error\n");
-	else if (err == WIN)
-		printf("Error\nWindow error\n");
-	else if (err == ALLOCATE)
-		printf("Error\nAllocation error\n");
-	else if (err == OPEN)
-		printf("Error\nFile open error\n");
-	else
-		return (false);
-	return (true);
-}
+	size_t	i;
 
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	return (i);
+}

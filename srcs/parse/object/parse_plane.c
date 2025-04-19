@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_light.c                                      :+:      :+:    :+:   */
+/*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 18:39:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/18 13:55:57 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/19 18:08:25 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 18:08:30 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	parse_light(t_rt *rt)
+bool	parse_plane(t_object *obj, char *line)
 {
-	size_t	i;
 	size_t	j;
+	t_plane	*plane;
 
-	rt->light = malloc(sizeof(t_light));
-	if (!rt->light)
+	obj->type = PLANE;
+	plane = malloc(sizeof(t_plane));
+	if (!plane)
 		return (error_message(ALLOCATE), false);
-	init_light(rt->light);
-	i = find_line_str(rt->rt, "L");
-	j = skip_space(rt->rt[i]) + 1;
-	if (!skip_and_set(rt->rt[i], &j, &(rt->light->position), (bool (*)(void *, char *, size_t *))set_coordinate))
+	init_plane(plane);
+	obj->object = plane;
+	j = skip_space(line) + 2;
+	if (!skip_and_set(line, &j, &(plane->position),
+			(bool (*)(void *, char *, size_t *))set_coordinate))
 		return (false);
-	if (!skip_and_set(rt->rt[i], &j, &(rt->light->brightness), (bool (*)(void *, char *, size_t *))set_brightness))
+	if (!skip_and_set(line, &j, &(plane->orientation),
+			(bool (*)(void *, char *, size_t *))set_vector))
 		return (false);
-	if (!skip_and_set(rt->rt[i], &j, &(rt->light->color), (bool (*)(void *, char *, size_t *))set_color))
+	if (!skip_and_set(line, &j, &(obj->color),
+			(bool (*)(void *, char *, size_t *))set_color))
 		return (false);
 	return (true);
 }

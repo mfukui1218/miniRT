@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message_common.c                             :+:      :+:    :+:   */
+/*   check_number_with_comma.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:43:12 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/16 18:32:22 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 20:37:11 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	error_message_common(int err)
+bool	check_number_with_comma(char *str, size_t *j)
 {
-	if (err == MLX)
-		printf("Error\nMLX error\n");
-	else if (err == WIN)
-		printf("Error\nWindow error\n");
-	else if (err == ALLOCATE)
-		printf("Error\nAllocation error\n");
-	else if (err == OPEN)
-		printf("Error\nFile open error\n");
-	else
+	if (str[*j] == '-')
+		(*j)++;
+	if (!('0' <= str[*j] && str[*j] <= '9'))
 		return (false);
+	while ('0' <= str[*j] && str[*j] <= '9')
+		(*j)++;
+	if (str[*j] == '.')
+	{
+		(*j)++;
+		if (!('0' <= str[*j] && str[*j] <= '9'))
+			return (false);
+		while ('0' <= str[*j] && str[*j] <= '9')
+			(*j)++;
+	}
+	if (str[*j] != ',')
+		return (false);
+	(*j)++;
 	return (true);
 }
-

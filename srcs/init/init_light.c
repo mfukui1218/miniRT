@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message_common.c                             :+:      :+:    :+:   */
+/*   init_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:43:12 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/15 22:00:34 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 18:30:46 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	error_message_common(int err)
+void	init_light(t_light *light)
 {
-	if (err == MLX)
-		printf("Error\nMLX error\n");
-	else if (err == WIN)
-		printf("Error\nWindow error\n");
-	else if (err == ALLOCATE)
-		printf("Error\nAllocation error\n");
-	else if (err == OPEN)
-		printf("Error\nFile open error\n");
-	else
-		return (false);
-	return (true);
+	light->position = (t_vector){0, 0, 0};
+	light->brightness = 0;
+	light->color = (t_color){255, 255, 255};
 }
-

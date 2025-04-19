@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message_common.c                             :+:      :+:    :+:   */
+/*   set_height.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:43:12 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/19 18:14:46 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 18:15:01 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	error_message_common(int err)
+bool	set_height(void *height, char *str, size_t *j)
 {
-	if (err == MLX)
-		printf("Error\nMLX error\n");
-	else if (err == WIN)
-		printf("Error\nWindow error\n");
-	else if (err == ALLOCATE)
-		printf("Error\nAllocation error\n");
-	else if (err == OPEN)
-		printf("Error\nFile open error\n");
-	else
-		return (false);
+	float	*height_f;
+
+	height_f = (float *)height;
+	*height_f = ft_atof_index_dev(str, j, true);
+	if (*height_f < 0.0f)
+		return (error_message(CYLINDER_RANGE), false);
 	return (true);
 }
-

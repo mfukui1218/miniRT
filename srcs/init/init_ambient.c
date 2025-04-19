@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message_common.c                             :+:      :+:    :+:   */
+/*   init_ambient.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:43:12 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/15 22:00:34 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 18:30:10 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	error_message_common(int err)
+void	init_ambient(t_ambient *ambient)
 {
-	if (err == MLX)
-		printf("Error\nMLX error\n");
-	else if (err == WIN)
-		printf("Error\nWindow error\n");
-	else if (err == ALLOCATE)
-		printf("Error\nAllocation error\n");
-	else if (err == OPEN)
-		printf("Error\nFile open error\n");
-	else
-		return (false);
-	return (true);
+	ambient->brightness = 0;
+	ambient->color = (t_color){0, 0, 0};
 }
-
