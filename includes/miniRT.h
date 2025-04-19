@@ -141,6 +141,7 @@ typedef enum error
 # define YELLOW "\e[33m"
 # define BLUE "\e[34m"
 # define CLC "\e[0m"
+# define FMT_24COLOR "\e[38;2;%d;%d;%dm"
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);

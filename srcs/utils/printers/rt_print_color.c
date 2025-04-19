@@ -16,5 +16,7 @@ void	rt_print_color(const t_color *color)
 {
 	if (color == NULL)
 		return ;
-	printf("(%d, %d, %d)\n", color->r, color->g, color->b);
+	printf(FMT_24COLOR "■ " CLC "(%d, %d, %d)\n",
+		color->r, color->g, color->b,
+		color->r, color->g, color->b);
 }
