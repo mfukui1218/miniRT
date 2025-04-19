@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:19:47 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/16 12:34:02 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 16:43:22 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ char	*get_next_line(int fd)
 	static char	*save;
 	ssize_t		read_c;
 
-	if (fd < 0 || fd > sysconf(_SC_OPEN_MAX) || BUFFER_SIZE <= 0)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (ft_free(&save), NULL);
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (ft_free(&buf), NULL);
