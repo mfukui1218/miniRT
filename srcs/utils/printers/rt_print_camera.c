@@ -16,13 +16,9 @@ void	rt_print_camera(const t_camera *camera)
 {
 	if (camera == NULL)
 		return ;
-	printf("{\n");
 	printf("	position: ");
 	rt_print_vector(&camera->position);
-	printf("\n");
 	printf("	orientation: ");
 	rt_print_vector(&camera->orientation);
-	printf("\n");
 	printf("	fov: %d\n", camera->fov);
-	printf("}\n");
 }

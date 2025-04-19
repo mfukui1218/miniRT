@@ -16,13 +16,9 @@ void	rt_print_light(const t_light *light)
 {
 	if (light == NULL)
 		return ;
-	printf("{\n");
 	printf("	position: ");
 	rt_print_vector(&light->position);
-	printf("\n");
 	printf("	brightness: %f\n", light->brightness);
 	printf("	color: ");
 	rt_print_color(&light->color);
-	printf("\n");
-	printf("}\n");
 }

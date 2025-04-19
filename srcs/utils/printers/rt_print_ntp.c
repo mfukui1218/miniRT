@@ -15,17 +15,11 @@
 
 void	rt_print_ntp(const void **ntp, void (*f)(const void *))
 {
-	bool	is_print;
-
 	if (ntp == NULL)
 		return ;
-	is_print = false;
 	while (*ntp != NULL)
 	{
-		if (is_print == true)
-			printf(" -> ");
 		f(*ntp);
-		is_print = true;
 		ntp++;
 	}
 	return ;

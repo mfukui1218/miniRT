@@ -16,14 +16,10 @@ void	rt_print_cylinder(const t_cylinder *cylinder)
 {
 	if (cylinder == NULL)
 		return ;
-	printf("{\n");
 	printf("		position: ");
 	rt_print_vector(&cylinder->position);
-	printf("\n");
 	printf("		orientation: ");
 	rt_print_vector(&cylinder->orientation);
-	printf("\n");
 	printf("		radius: %f\n", cylinder->radius);
 	printf("		height: %f\n", cylinder->height);
-	printf("	}\n");
 }

@@ -17,9 +17,9 @@ void	rt_print_obj_type(const t_object_type *type)
 	if (type == NULL)
 		return ;
 	if (*type == SPHERE)
-		printf("SPHERE");
+		printf(BLUE "SPHERE\n" CLC);
 	else if (*type == PLANE)
-		printf("PLANE");
+		printf(GREEN "PLANE\n" CLC);
 	else if (*type == CYLINDER)
-		printf("CYLINDER");
+		printf(YELLOW "CYLINDER\n" CLC);
 }

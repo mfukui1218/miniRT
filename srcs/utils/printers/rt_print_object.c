@@ -16,11 +16,9 @@ void	rt_print_object(const t_object *obj)
 {
 	if (obj == NULL)
 		return ;
-	printf("{\n");
 	printf("	type: ");
 	rt_print_obj_type(&obj->type);
-	printf("\n");
-	printf("	object: ");
+	printf("	object: \n");
 	if (obj->type == SPHERE)
 		rt_print_sphere(obj->object);
 	else if (obj->type == PLANE)
@@ -29,6 +27,4 @@ void	rt_print_object(const t_object *obj)
 		rt_print_cylinder(obj->object);
 	printf("	color: ");
 	rt_print_color(&obj->color);
-	printf("\n");
-	printf("}\n");
 }

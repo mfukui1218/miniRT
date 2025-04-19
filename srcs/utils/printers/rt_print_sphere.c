@@ -16,10 +16,7 @@ void	rt_print_sphere(const t_sphere *sphere)
 {
 	if (sphere == NULL)
 		return ;
-	printf("{\n");
 	printf("		position: ");
 	rt_print_vector(&sphere->position);
-	printf("\n");
 	printf("		radius: %f\n", sphere->radius);
-	printf("	}\n");
 }

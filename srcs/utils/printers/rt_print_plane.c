@@ -16,12 +16,8 @@ void	rt_print_plane(const t_plane *plane)
 {
 	if (plane == NULL)
 		return ;
-	printf("{\n");
 	printf("		position: ");
 	rt_print_vector(&plane->position);
-	printf("\n");
 	printf("		orientation: ");
 	rt_print_vector(&plane->orientation);
-	printf("\n");
-	printf("	}\n");
 }

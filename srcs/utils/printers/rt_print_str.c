@@ -14,5 +14,5 @@
 
 void	rt_print_str(const char *str)
 {
-	printf("%s", str);
+	printf("	%s", str);
 }

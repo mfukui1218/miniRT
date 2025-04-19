@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "miniRT.h"
+#include <stdbool.h>
 
 void	rt_print_list(const t_list *lst, void (*f)(const void *))
 {
 	while (lst != NULL)
 	{
 		f(lst->content);
-		printf(" -> ");
 		lst = lst->next;
 	}
 }

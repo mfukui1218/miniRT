@@ -17,21 +17,19 @@ void	rt_print_rt(const t_rt *rt)
 {
 	if (rt == NULL)
 		return ;
-	printf("{\n");
-	printf("	mlx: %p\n", rt->mlx);
-	printf("	win: %p\n", rt->win);
-	printf("	rt: ");
+	printf("mlx: %p\n", rt->mlx);
+	printf("win: %p\n", rt->win);
+	printf("rt: \n");
 	rt_print_ntp((const void **)rt->rt, (void (*)(const void *))rt_print_str);
 	printf("\n");
-	printf("	camera: ");
+	printf("camera: \n");
 	rt_print_camera(rt->camera);
-	printf("	ambient: ");
+	printf("ambient: \n");
 	rt_print_ambient(rt->ambient);
-	printf("	light: ");
+	printf("light: \n");
 	rt_print_light(rt->light);
-	printf("	object: ");
+	printf("object(rt): \n");
 	rt_print_list(rt->object, (void (*)(const void *))rt_print_object);
-	printf("}\n");
 }
 
 /**

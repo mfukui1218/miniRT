@@ -16,10 +16,7 @@ void	rt_print_ambient(const t_ambient *ambient)
 {
 	if (ambient == NULL)
 		return ;
-	printf("{\n");
 	printf("	brightness: %f\n", ambient->brightness);
 	printf("	color: ");
 	rt_print_color(&ambient->color);
-	printf("\n");
-	printf("}\n");
 }

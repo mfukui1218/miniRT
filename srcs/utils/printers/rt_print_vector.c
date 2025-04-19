@@ -16,5 +16,5 @@ void	rt_print_vector(const t_vector *vector)
 {
 	if (vector == NULL)
 		return ;
-	printf("(%f, %f, %f)", vector->x, vector->y, vector->z);
+	printf("(%f, %f, %f)\n", vector->x, vector->y, vector->z);
 }

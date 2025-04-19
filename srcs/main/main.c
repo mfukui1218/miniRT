@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	init_rt(rt);
 	if (!parse_rt(rt, argv[1]))
 		return (free_rt(rt), EXIT_FAILURE);
+	rt_print_rt(rt);
 	free_rt(rt);
 	return (0);
 }

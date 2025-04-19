@@ -136,6 +136,11 @@ typedef enum error
 # define MAX_TXT_HEIGHT	200
 # define SCREEN_HEIGHT	800
 # define SCREEN_WIDTH	1000
+# define RED "\e[31m"
+# define GREEN "\e[32m"
+# define YELLOW "\e[33m"
+# define BLUE "\e[34m"
+# define CLC "\e[0m"
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
