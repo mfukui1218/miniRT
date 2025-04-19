@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 01:38:19 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 07:17:55 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,5 +244,9 @@ void	rt_print_str(const char *str);
 void	rt_print_vector(const t_vector *vector);
 void	rt_print_indent(int indent);
 void	rt_print_with_indent(t_print_func f, const void *arg);
+//event handler
+int	rt_expose_event_handler(t_rt *rt);
+int	rt_key_event_handler(int keycode, t_rt *rt);
+int	rt_destroy_event_handler(t_rt *rt);
 
 #endif
