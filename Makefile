@@ -55,7 +55,7 @@ $(MLX_LIB):
 
 debug: CFLAGS += -g -O0
 debug: LDFLAGS += -g -O0
-debug:
+debug: all
 
 clean:
 	$(RM) -r $(OBJ_DIR)
