@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 22:20:20 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 00:59:39 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_light		t_light;
 typedef struct s_object		t_object;
 typedef struct s_scene		t_scene;
 typedef struct s_ambient	t_ambient;
+
+typedef void 				(*t_print_func)(const void *);
 
 typedef struct s_color
 {
@@ -142,6 +144,7 @@ typedef enum error
 # define BLUE "\e[34m"
 # define CLC "\e[0m"
 # define FMT_24COLOR "\e[38;2;%d;%d;%dm"
+# define INDENT_SIZE 4
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
@@ -236,5 +239,7 @@ void	rt_print_rt(const t_rt *rt);
 void	rt_print_sphere(const t_sphere *sphere);
 void	rt_print_str(const char *str);
 void	rt_print_vector(const t_vector *vector);
+void	rt_print_indent(int indent);
+void	rt_print_with_indent(t_print_func f, const void *arg);
 
 #endif
