@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 07:18:48 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 07:37:56 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ typedef enum error
 # define ADD_INDENT		1
 # define SUB_INDENT		-1
 # define PRINT_INDENT	0
-# define BG_COLOR		0x00FFFFFF
+# define BG_COLOR		0x0088d2ff
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
