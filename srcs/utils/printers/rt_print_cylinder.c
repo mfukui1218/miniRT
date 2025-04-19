@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "miniRT.h"
 
 void	rt_print_cylinder(const t_cylinder *cylinder)
