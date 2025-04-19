@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:43:12 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 21:09:44 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ bool	error_message_common(int err)
 		return (false);
 	return (true);
 }
-

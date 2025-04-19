@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:19:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 16:01:49 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 21:01:50 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@ int	main(int argc, char **argv)
 	init_rt(rt);
 	if (!parse_rt(rt, argv[1]))
 		return (free_rt(rt), EXIT_FAILURE);
-	// mlx_loop(rt->mlx);
-	// mlx_destroy_window(rt->mlx, rt->win);
-	// mlx_destroy_display(rt->mlx);
 	free_rt(rt);
 	return (0);
 }
 
-void line(void)
+void	line(void)
 {
 	printf("--------------------------------------------------\n");
 }

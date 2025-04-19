@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_plane.c                                       :+:      :+:    :+:   */
+/*   skip_and_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 17:18:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:03:06 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/19 21:07:01 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 21:07:11 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	init_plane(t_plane *plane)
+bool	skip_and_set(char *line, size_t *j,
+	void *dst, bool (*func)(void *, char *, size_t *))
 {
-	plane->position = (t_vector){0, 0, 0};
-	plane->orientation = (t_vector){0, 0, 1};
+	*j += skip_space(line + *j);
+	if (!func(dst, line, j))
+		return (false);
+	return (true);
 }

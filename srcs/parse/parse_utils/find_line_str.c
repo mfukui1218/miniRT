@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_plane.c                                       :+:      :+:    :+:   */
+/*   find_line_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 17:18:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:03:06 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/19 21:08:11 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/19 21:08:12 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	init_plane(t_plane *plane)
+size_t	find_line_str(char **rt, char *start)
 {
-	plane->position = (t_vector){0, 0, 0};
-	plane->orientation = (t_vector){0, 0, 1};
+	size_t	i;
+
+	i = 0;
+	while (rt[i])
+	{
+		if (is_start_str(rt[i], start))
+			return (i);
+		i++;
+	}
+	return (0);
 }

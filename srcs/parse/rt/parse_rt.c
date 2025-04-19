@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 20:42:05 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 21:10:54 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ static bool	init_mlx_window(t_rt *rt)
 	rt->mlx = mlx_init();
 	if (!rt->mlx)
 		return (error_message(MLX), false);
-
 	rt->win = mlx_new_window(rt->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "miniRT");
 	if (!rt->win)
 		return (error_message(WIN), false);
-
 	return (true);
 }
-
 
 static bool	load_rt_file(t_rt *rt, char *file_name)
 {
@@ -45,11 +42,9 @@ static bool	parse_scene_elements(t_rt *rt)
 		if (is_start_str(rt->rt[i], "C"))
 			if (!parse_camera(rt))
 				return (error_message(CAMERA), false);
-
 		if (is_start_str(rt->rt[i], "A"))
 			if (!parse_ambient(rt))
 				return (error_message(AMBIENT), false);
-
 		if (is_start_str(rt->rt[i], "L"))
 			if (!parse_light(rt))
 				return (error_message(LIGHT), false);
