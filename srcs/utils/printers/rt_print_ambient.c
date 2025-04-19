@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_fov.c                                          :+:      :+:    :+:   */
+/*   rt_print_ambient.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 18:12:17 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 22:12:23 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/19 17:35:31 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/20 01:34:48 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	set_fov(void *fov, char *str, size_t *j)
+void	rt_print_ambient(const t_ambient *ambient)
 {
-	int		*fov_f;
-
-	fov_f = (int *)fov;
-	*fov_f = ft_atoi(&str[*j]);
-	if (*fov_f < 0 || *fov_f > 180)
-		return (error_message(FOV_RANGE), false);
-	return (true);
+	if (ambient == NULL)
+		return ;
+	rt_print_indent(PRINT_INDENT);
+	printf("brightness: %f\n", ambient->brightness);
+	rt_print_str("color: ");
+	rt_print_color(&ambient->color);
 }

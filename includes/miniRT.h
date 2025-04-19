@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:40:31 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/20 01:38:19 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_object		t_object;
 typedef struct s_scene		t_scene;
 typedef struct s_ambient	t_ambient;
 
+typedef void 				(*t_print_func)(const void *);
+
 typedef struct s_color
 {
 	int	r;
@@ -55,7 +57,7 @@ typedef struct s_camera
 {
 	t_vector	position;
 	t_vector	orientation;
-	float		fov;
+	int			fov;
 }	t_camera;
 
 typedef struct s_ambient
@@ -136,6 +138,16 @@ typedef enum error
 # define MAX_TXT_HEIGHT	200
 # define SCREEN_HEIGHT	800
 # define SCREEN_WIDTH	1000
+# define RED			"\e[31m"
+# define GREEN			"\e[32m"
+# define YELLOW			"\e[33m"
+# define BLUE			"\e[34m"
+# define CLC			"\e[0m"
+# define FMT_24COLOR	"\e[38;2;%d;%d;%dm"
+# define INDENT_SIZE	4
+# define ADD_INDENT		1
+# define SUB_INDENT		-1
+# define PRINT_INDENT	0
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
@@ -214,5 +226,23 @@ void	free_color(t_color *color);
 void	free_split(char **split);
 
 void line(void);
+
+//printer
+void	rt_print_ambient(const t_ambient *ambient);
+void	rt_print_camera(const t_camera *camera);
+void	rt_print_color(const t_color *color);
+void	rt_print_cylinder(const t_cylinder *cylinder);
+void	rt_print_light(const t_light *light);
+void	rt_print_list(const t_list *lst, void (*f)(const void *));
+void	rt_print_ntp(const void **ntp, void (*f)(const void *));
+void	rt_print_object_type(const t_object_type *type);
+void	rt_print_object(const t_object *obj);
+void	rt_print_plane(const t_plane *plane);
+void	rt_print_rt(const t_rt *rt);
+void	rt_print_sphere(const t_sphere *sphere);
+void	rt_print_str(const char *str);
+void	rt_print_vector(const t_vector *vector);
+void	rt_print_indent(int indent);
+void	rt_print_with_indent(t_print_func f, const void *arg);
 
 #endif

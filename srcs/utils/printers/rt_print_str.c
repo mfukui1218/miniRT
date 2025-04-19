@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_fov.c                                          :+:      :+:    :+:   */
+/*   rt_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 18:12:17 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 22:12:23 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/19 17:55:41 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/20 01:34:51 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "miniRT.h"
 
-bool	set_fov(void *fov, char *str, size_t *j)
+void	rt_print_str(const char *str)
 {
-	int		*fov_f;
-
-	fov_f = (int *)fov;
-	*fov_f = ft_atoi(&str[*j]);
-	if (*fov_f < 0 || *fov_f > 180)
-		return (error_message(FOV_RANGE), false);
-	return (true);
+	rt_print_indent(PRINT_INDENT);
+	printf("%s", str);
 }
