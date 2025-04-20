@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 17:26:41 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:35:37 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct rt
 {
 	void		*mlx;
 	void		*win;
-	t_image		*screen_image;	// TODO: t_screenの中に入れる or 統合する
+	t_image		*screen_image;	// TODO: into some, merge to some or etc...
 	char		**rt;
 	t_camera	*camera;
 	t_ambient	*ambient;
