@@ -12,11 +12,11 @@
 
 #include "miniRT.h"
 
-t_screen	*rt_new_image(void *mlx, int width, int height)
+t_image	*rt_new_image(void *mlx, int width, int height)
 {
-	t_screen	*img;
+	t_image	*img;
 
-	img = malloc(sizeof(t_screen));
+	img = malloc(sizeof(t_image));
 	if (!img)
 		return (NULL);
 	img->img = mlx_new_image(mlx, width, height);

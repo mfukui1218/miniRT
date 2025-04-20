@@ -23,7 +23,7 @@ bool	rt_draw_background(t_rt *rt)
 		x = 0;
 		while (x < SCREEN_WIDTH)
 		{
-			rt_mlx_pixel_put(rt->screen, x, y, BG_COLOR);
+			rt_mlx_pixel_put(rt->screen_image, x, y, BG_COLOR);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 07:26:48 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:24:01 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	free_rt(t_rt *rt)
 
 static void	free_relational_mlx(t_rt *rt)
 {
-	if (rt->screen)
+	if (rt->screen_image)
 	{
-		rt_destroy_image(rt->mlx, rt->screen);
-		rt->screen = NULL;
+		rt_destroy_image(rt->mlx, rt->screen_image);
+		rt->screen_image = NULL;
 	}
 	if (rt->win)
 	{

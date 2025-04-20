@@ -12,7 +12,7 @@
 
 #include "miniRT.h"
 
-void	rt_mlx_pixel_put(t_screen *image, int x, int y, int color)
+void	rt_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
 	char	*dst;
 

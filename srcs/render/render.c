@@ -14,5 +14,5 @@
 
 void	render(t_rt *rt)
 {
-	mlx_put_image_to_window(rt->mlx, rt->win, rt->screen->img, 0, 0);
+	mlx_put_image_to_window(rt->mlx, rt->win, rt->screen_image->img, 0, 0);
 }
