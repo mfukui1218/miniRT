@@ -12,7 +12,7 @@
 
 #include "miniRT.h"
 
-void	rt_destroy_image(void *mlx, t_image *img)
+void	rt_destroy_image(void *mlx, t_screen *img)
 {
 	if (img == NULL)
 		return ;

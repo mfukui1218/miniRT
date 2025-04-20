@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 07:37:56 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:07:23 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_light		t_light;
 typedef struct s_object		t_object;
 typedef struct s_scene		t_scene;
 typedef struct s_ambient	t_ambient;
-typedef struct s_image		t_image;
+typedef struct s_screen		t_screen;
 
 typedef void 				(*t_print_func)(const void *);
 
@@ -47,7 +47,7 @@ typedef struct rt
 {
 	void		*mlx;
 	void		*win;
-	t_image		*screen;
+	t_screen	*screen;
 	char		**rt;
 	t_camera	*camera;
 	t_ambient	*ambient;
@@ -109,14 +109,16 @@ typedef struct s_cylinder
 	float		height;
 }	t_cylinder;
 
-typedef struct	s_image
+typedef struct	s_screen
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}	t_image;
+	int		width;
+	int		height;
+}	t_screen;
 
 typedef enum error
 {
@@ -160,6 +162,7 @@ typedef enum error
 # define SUB_INDENT		-1
 # define PRINT_INDENT	0
 # define BG_COLOR		0x0088d2ff
+# define LOAD_COLOR		0x00ffffff
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
@@ -263,9 +266,9 @@ int	rt_key_event_handler(int keycode, t_rt *rt);
 int	rt_destroy_event_handler(t_rt *rt);
 
 //mlx
-t_image	*rt_new_image(void *mlx, int width, int height);
-void	rt_destroy_image(void *mlx, t_image *img);
-void	rt_mlx_pixel_put(t_image *image, int x, int y, int color);
+t_screen	*rt_new_image(void *mlx, int width, int height);
+void	rt_destroy_image(void *mlx, t_screen *img);
+void	rt_mlx_pixel_put(t_screen *image, int x, int y, int color);
 
 //draw
 bool	draw(t_rt *rt);
