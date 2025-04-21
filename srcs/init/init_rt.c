@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:00:34 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 17:24:45 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:33:18 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,8 @@ void	init_rt(t_rt *rt)
 	rt->camera = NULL;
 	rt->light = NULL;
 	rt->object = NULL;
+	rt->screen.width = 0;
+	rt->screen.height = 0;
+	rt->screen.aspect_ratio = 0;
+	rt->screen.scale = 0;
 }

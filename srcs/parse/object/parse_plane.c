@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 18:08:25 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:10:44 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/21 20:44:35 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	parse_plane(t_object *obj, char *line)
 	if (!skip_and_set(line, &j, &(plane->orientation),
 			(bool (*)(void *, char *, size_t *))set_vector))
 		return (false);
-	if (!skip_and_set(line, &j, &(obj->color),
+	if (!skip_and_set(line, &j, &(plane->color),
 			(bool (*)(void *, char *, size_t *))set_color))
 		return (false);
 	return (true);

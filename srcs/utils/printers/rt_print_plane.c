@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_print_plane.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:47:51 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/20 01:13:18 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/22 01:09:44 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	rt_print_plane(const t_plane *plane)
 	rt_print_vector(&plane->position);
 	rt_print_str("orientation: ");
 	rt_print_vector(&plane->orientation);
+	printf("color: %d,%d,%d\n", plane->color.r, plane->color.g, plane->color.b);
 }
