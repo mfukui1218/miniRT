@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 01:38:19 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:35:37 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_light		t_light;
 typedef struct s_object		t_object;
 typedef struct s_scene		t_scene;
 typedef struct s_ambient	t_ambient;
+typedef struct s_image		t_image;
 
 typedef void 				(*t_print_func)(const void *);
 
@@ -46,6 +47,7 @@ typedef struct rt
 {
 	void		*mlx;
 	void		*win;
+	t_image		*screen_image;	// TODO: into some, merge to some or etc...
 	char		**rt;
 	t_camera	*camera;
 	t_ambient	*ambient;
@@ -107,6 +109,15 @@ typedef struct s_cylinder
 	float		height;
 }	t_cylinder;
 
+typedef struct	s_image
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_image;
+
 typedef enum error
 {
 	MLX = 1,
@@ -148,6 +159,8 @@ typedef enum error
 # define ADD_INDENT		1
 # define SUB_INDENT		-1
 # define PRINT_INDENT	0
+# define BG_COLOR		0x0088d2ff
+# define LOAD_COLOR		0x00ffffff
 
 void	init_rt(t_rt *rt);
 void	init_camera(t_camera *camera);
@@ -244,5 +257,22 @@ void	rt_print_str(const char *str);
 void	rt_print_vector(const t_vector *vector);
 void	rt_print_indent(int indent);
 void	rt_print_with_indent(t_print_func f, const void *arg);
+
+//event handler
+int	rt_expose_event_handler(t_rt *rt);
+int	rt_key_event_handler(int keycode, t_rt *rt);
+int	rt_destroy_event_handler(t_rt *rt);
+
+//mlx
+t_image	*rt_new_image(void *mlx, int width, int height);
+void	rt_destroy_image(void *mlx, t_image *img);
+void	rt_mlx_pixel_put(t_image *image, int x, int y, int color);
+
+//draw
+bool	draw(t_rt *rt);
+bool	rt_draw_background(t_rt *rt);
+
+//render
+void	render(t_rt *rt);
 
 #endif

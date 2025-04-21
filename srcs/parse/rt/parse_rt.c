@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:10:54 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/20 17:23:42 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ static bool	init_mlx_window(t_rt *rt)
 	rt->win = mlx_new_window(rt->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "miniRT");
 	if (!rt->win)
 		return (error_message(WIN), false);
+	mlx_string_put(rt->mlx, rt->win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
+		LOAD_COLOR, "Loading...");
+	rt->screen_image = rt_new_image(rt->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!rt->screen_image)
+		return (error_message(ALLOCATE), false);
 	return (true);
 }
 

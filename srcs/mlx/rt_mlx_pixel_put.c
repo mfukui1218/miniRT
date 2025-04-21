@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   rt_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/20 06:48:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/20 06:48:34 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/20 06:29:31 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/20 06:29:31 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	render(t_rt *rt)
+void	rt_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
-	mlx_put_image_to_window(rt->mlx, rt->win, rt->screen_image->img, 0, 0);
+	char	*dst;
+
+	dst = image->addr
+		+ (y * image->line_length + x * (image->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
