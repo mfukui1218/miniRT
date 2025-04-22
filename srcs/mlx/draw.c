@@ -16,5 +16,7 @@ bool	draw(t_rt *rt)
 {
 	if (rt_draw_background(rt) == false)
 		return (false);
+	if (set_ray(rt) == false)
+		return (false);
 	return (true);
 }
