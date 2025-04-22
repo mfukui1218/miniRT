@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 17:23:42 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:31:56 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ bool	parse_rt(t_rt *rt, char *file_name)
 		return (false);
 	if (!load_rt_file(rt, file_name))
 		return (false);
+	rt->screen.width = SCREEN_WIDTH;
+	rt->screen.height = SCREEN_HEIGHT;
+	rt->screen.aspect_ratio = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
+	rt->screen.scale = 1.0f / (2.0f * tanf(rt->camera->fov / 2.0f * (M_PI / 180.0f)));
 	if (!parse_scene_elements(rt))
 		return (false);
 	if (!parse_object(rt))

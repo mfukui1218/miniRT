@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 18:06:59 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 18:07:16 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/21 20:44:42 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	parse_sphere(t_object *obj, char *line)
 	if (!skip_and_set(line, &j, &(sphere->radius),
 			(bool (*)(void *, char *, size_t *))set_radius))
 		return (false);
-	if (!skip_and_set(line, &j, &(obj->color),
+	if (!skip_and_set(line, &j, &(sphere->color),
 			(bool (*)(void *, char *, size_t *))set_color))
 		return (false);
 	return (true);

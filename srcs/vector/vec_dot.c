@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_plane.c                                       :+:      :+:    :+:   */
+/*   vec_dot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/19 17:18:14 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/21 20:43:39 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/21 23:21:33 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	init_plane(t_plane *plane)
+float	vec_dot(t_vector a, t_vector b)
 {
-	plane->position = (t_vector){0, 0, 0};
-	plane->orientation = (t_vector){0, 0, 1};
-	plane->color = (t_color){0, 0, 0};
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

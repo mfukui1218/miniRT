@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 17:35:37 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/22 01:11:55 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+#include <float.h>
 
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
@@ -33,6 +34,8 @@ typedef struct s_object		t_object;
 typedef struct s_scene		t_scene;
 typedef struct s_ambient	t_ambient;
 typedef struct s_image		t_image;
+typedef struct s_screen		t_screen;
+typedef struct s_ray		t_ray;
 
 typedef void 				(*t_print_func)(const void *);
 
@@ -42,6 +45,16 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
+
+typedef struct s_screen
+{
+	size_t	width;
+	size_t	height;
+	float	aspect_ratio;
+	float	scale;
+}	t_screen;
+
+
 
 typedef struct rt
 {
@@ -53,6 +66,7 @@ typedef struct rt
 	t_ambient	*ambient;
 	t_light		*light;
 	t_list		*object;
+	t_screen	screen;
 }	t_rt;
 
 typedef struct s_camera
@@ -75,6 +89,12 @@ typedef struct s_light
 	t_color		color;
 }	t_light;
 
+typedef struct s_ray
+{
+	t_vector	origin;
+	t_vector	direction;
+}	t_ray;
+
 typedef enum e_object_type
 {
 	SPHERE,
@@ -86,19 +106,20 @@ typedef struct s_object
 {
 	t_object_type	type;
 	void			*object;
-	t_color			color;
 }	t_object;
 
 typedef struct s_sphere
 {
 	t_vector	position;
 	float		radius;
+	t_color		color;
 }	t_sphere;
 
 typedef struct s_plane
 {
 	t_vector	position;
 	t_vector	orientation;
+	t_color		color;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -107,6 +128,7 @@ typedef struct s_cylinder
 	t_vector	orientation;
 	float		radius;
 	float		height;
+	t_color		color;
 }	t_cylinder;
 
 typedef struct	s_image
@@ -118,6 +140,17 @@ typedef struct	s_image
 	int		endian;
 }	t_image;
 
+typedef struct s_quadratic
+{
+	float	a;
+	float	b;
+	float	c;
+	float	discriminant;
+	float	t1;
+	float	t2;
+}	t_quadratic;
+
+
 typedef enum error
 {
 	MLX = 1,
@@ -128,6 +161,7 @@ typedef enum error
 	AMBIENT,
 	LIGHT,
 	OBJECT,
+	RAY,
 	COORD_RT,
 	COORD_RANGE,
 	BRIGHTNESS_RT,
@@ -183,6 +217,10 @@ bool	parse_object(t_rt *rt);
 bool	parse_sphere(t_object *obj, char *line);
 bool	parse_plane(t_object *obj, char *line);
 bool	parse_cylinder(t_object *obj, char *line);
+
+//ray
+t_ray	generate_ray(t_rt *rt, size_t x, size_t y);
+t_color get_hit_color(t_rt *rt, t_ray ray);
 
 //error
 void	error_message(int error);
@@ -274,5 +312,20 @@ bool	rt_draw_background(t_rt *rt);
 
 //render
 void	render(t_rt *rt);
+
+//vector
+
+t_vector	vec_add(t_vector a, t_vector b);
+t_vector	vec_sub(t_vector a, t_vector b);
+t_vector	vec_mul(t_vector a, t_vector b);
+t_vector	vec_normalize(t_vector v);
+t_vector	vec_cross(t_vector a, t_vector b);
+float		vec_dot(t_vector a, t_vector b);
+t_vector	vec_scale(t_vector a, float b);
+
+//hit
+bool	hit_plane(t_ray ray, t_plane *plane, float *t);
+bool	hit_sphere(t_ray ray, t_sphere *sphere, float *t);
+bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, float *t);
 
 #endif
