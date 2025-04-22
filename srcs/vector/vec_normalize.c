@@ -6,16 +6,16 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 13:25:19 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:44:56 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector vec_normalize(t_vector v)
+t_vector	vec_normalize(t_vector v)
 {
-	float length;
-	t_vector result;
+	float		length;
+	t_vector	result;
 
 	length = sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
 	if (length == 0)

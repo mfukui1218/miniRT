@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:15:03 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 13:16:04 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:42:09 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ bool	parse_rt(t_rt *rt, char *file_name)
 	rt->screen.width = SCREEN_WIDTH;
 	rt->screen.height = SCREEN_HEIGHT;
 	rt->screen.aspect_ratio = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
-	rt->screen.scale = 1.0f / (2.0f * tanf(rt->camera->fov / 2.0f * (M_PI / 180.0f)));
+	rt->screen.scale
+		= 1.0f / (2.0f * tanf(rt->camera->fov / 2.0f * (M_PI / 180.0f)));
 	return (true);
 }
