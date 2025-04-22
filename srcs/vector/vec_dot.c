@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec_dot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/21 23:21:33 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-float	vec_dot(t_vector a, t_vector b)
+double	vec_dot(t_vector a, t_vector b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 14:48:05 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	hit_plane(t_ray ray, t_plane *plane, float *t)
+bool	hit_plane(t_ray ray, t_plane *plane, double *t)
 {
 	t_vector	axis;
 	t_vector	oc;
-	float		dot_product;
+	double		dot_product;
 
 	axis = vec_normalize(plane->orientation);
 	dot_product = vec_dot(ray.direction, axis);

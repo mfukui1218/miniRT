@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:09:22 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:13:02 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_ambient	t_ambient;
 typedef struct s_image		t_image;
 typedef struct s_screen		t_screen;
 typedef struct s_ray		t_ray;
-typedef float				t_radiance;
+typedef double				t_radiance;
 
 typedef void 				(*t_print_func)(const void *);
 
@@ -51,8 +51,8 @@ typedef struct s_screen
 {
 	size_t	width;
 	size_t	height;
-	float	aspect_ratio;
-	float	scale;
+	double	aspect_ratio;
+	double	scale;
 }	t_screen;
 
 
@@ -79,14 +79,14 @@ typedef struct s_camera
 
 typedef struct s_ambient
 {
-	float		brightness;
+	double		brightness;
 	t_color		color;
 }	t_ambient;
 
 typedef struct s_light
 {
 	t_vector	position;
-	float		brightness;
+	double		brightness;
 	t_color		color;
 }	t_light;
 
@@ -112,7 +112,7 @@ typedef struct s_object
 typedef struct s_sphere
 {
 	t_vector	position;
-	float		radius;
+	double		radius;
 	t_color		color;
 }	t_sphere;
 
@@ -127,8 +127,8 @@ typedef struct s_cylinder
 {
 	t_vector	position;
 	t_vector	orientation;
-	float		radius;
-	float		height;
+	double		radius;
+	double		height;
 	t_color		color;
 }	t_cylinder;
 
@@ -143,12 +143,12 @@ typedef struct	s_image
 
 typedef struct s_quadratic
 {
-	float	a;
-	float	b;
-	float	c;
-	float	discriminant;
-	float	t1;
-	float	t2;
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double	t1;
+	double	t2;
 }	t_quadratic;
 
 typedef struct s_camera_vectors
@@ -247,7 +247,7 @@ bool	error_message_value(int error);
 size_t	skip_space(char *str);
 void	inclement_ij(size_t *i, size_t *j);
 bool	is_start_str(char *str, char *start);
-float	ft_atof_index_dev(char *str, size_t *j, bool dev);
+double	ft_atod_index_dev(char *str, size_t *j, bool dev);
 size_t	find_line_str(char **rt, char *start);
 bool	is_valid_condition(char **rt);
 
@@ -264,7 +264,7 @@ bool	set_height(void *height, char *str, size_t *j);
 bool	set_ray(t_rt *rt);
 int		ft_atoi_index(char *str, size_t *j);
 bool	check_range_int(int value, int min, int max);
-bool	check_range_float(float value, float min, float max);
+bool	check_range_double(double value, double min, double max);
 
 //free
 void	free_rt(t_rt *rt);
@@ -316,7 +316,7 @@ bool	rt_draw_background(t_rt *rt);
 void	render(t_rt *rt);
 
 //math
-float	solve_quadratic(float a, float b, float discriminant);
+double	solve_quadratic(double a, double b, double discriminant);
 
 //vector
 
@@ -325,17 +325,17 @@ t_vector	vec_sub(t_vector a, t_vector b);
 t_vector	vec_mul(t_vector a, t_vector b);
 t_vector	vec_normalize(t_vector v);
 t_vector	vec_cross(t_vector a, t_vector b);
-float		vec_dot(t_vector a, t_vector b);
-t_vector	vec_scale(t_vector a, float b);
+double		vec_dot(t_vector a, t_vector b);
+t_vector	vec_scale(t_vector a, double b);
 t_vector	vec_add3(t_vector a, t_vector b, t_vector c);
-float		vec_len(t_vector a);
+double		vec_len(t_vector a);
 
 //hit
-bool	hit_plane(t_ray ray, t_plane *plane, float *t);
-bool	hit_sphere(t_ray ray, t_sphere *sphere, float *t);
-bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, float *t);
-bool	hit_cylinder_caps(t_ray ray, t_cylinder *cylinder, float *t);
-bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, float *t);
+bool	hit_plane(t_ray ray, t_plane *plane, double *t);
+bool	hit_sphere(t_ray ray, t_sphere *sphere, double *t);
+bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, double *t);
+bool	hit_cylinder_caps(t_ray ray, t_cylinder *cylinder, double *t);
+bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, double *t);
 
 //color
 bool	check_number_with_comma(char *str, size_t *j);

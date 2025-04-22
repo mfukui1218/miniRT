@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof_index_dev.c                                :+:      :+:    :+:   */
+/*   ft_atod_index_dev.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:28:20 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 17:40:54 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:13:14 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	skip_parse_sign(char *str, size_t *j)
 	return (sign);
 }
 
-static float	parse_integer_part(char *str, size_t *j)
+static double	parse_integer_part(char *str, size_t *j)
 {
 	int		sign;
-	float	result;
+	double	result;
 
 	sign = 1;
 	if (str[*j] == '-')
@@ -49,9 +49,9 @@ static float	parse_integer_part(char *str, size_t *j)
 	return (result * sign);
 }
 
-static float	parse_fractional_part(char *str, size_t *j)
+static double	parse_fractional_part(char *str, size_t *j)
 {
-	float	fraction;
+	double	fraction;
 	int		divisor;
 
 	fraction = 0.0f;
@@ -61,7 +61,7 @@ static float	parse_fractional_part(char *str, size_t *j)
 		(*j)++;
 		while (str[*j] >= '0' && str[*j] <= '9')
 		{
-			fraction += (float)(str[*j] - '0') / divisor;
+			fraction += (double)(str[*j] - '0') / divisor;
 			divisor *= 10;
 			(*j)++;
 		}
@@ -69,9 +69,9 @@ static float	parse_fractional_part(char *str, size_t *j)
 	return (fraction);
 }
 
-float	ft_atof_index_dev(char *str, size_t *j, bool dev)
+double	ft_atod_index_dev(char *str, size_t *j, bool dev)
 {
-	float	result;
+	double	result;
 	int		sign;
 	size_t	tmp;
 

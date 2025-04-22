@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   check_range_double.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:08:17 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:08:22 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:14:31 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	check_range_float(float value, float min, float max)
+bool	check_range_double(double value, double min, double max)
 {
 	return (value >= min && value <= max);
 }

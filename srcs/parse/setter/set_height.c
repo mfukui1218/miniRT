@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_height.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 18:14:46 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 18:15:01 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:13:02 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 bool	set_height(void *height, char *str, size_t *j)
 {
-	float	*height_f;
+	double	*height_f;
 
-	height_f = (float *)height;
-	*height_f = ft_atof_index_dev(str, j, true);
+	height_f = (double *)height;
+	*height_f = ft_atod_index_dev(str, j, true);
 	if (*height_f < 0.0f)
 		return (error_message(CYLINDER_RANGE), false);
 	return (true);
