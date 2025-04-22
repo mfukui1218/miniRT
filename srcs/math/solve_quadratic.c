@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_add.c                                          :+:      :+:    :+:   */
+/*   solve_quadratic(.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:45:08 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:26:29 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector	vec_add(t_vector a, t_vector b)
+float	solve_quadratic(float a, float b, float discriminant)
 {
-	t_vector	result;
+	float	t1;
+	float	t2;
 
-	result.x = a.x + b.x;
-	result.y = a.y + b.y;
-	result.z = a.z + b.z;
-	return (result);
+	if (discriminant < 0)
+		return (-1.0f);
+	t1 = (-b - sqrtf(discriminant)) / (2.0f * a);
+	t2 = (-b + sqrtf(discriminant)) / (2.0f * a);
+	if (t1 > 0.001f)
+		return (t1);
+	else if (t2 > 0.001f)
+		return (t2);
+	return (-1.0f);
 }

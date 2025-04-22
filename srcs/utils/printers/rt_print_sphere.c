@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:44:37 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/22 01:09:31 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:44:12 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	rt_print_sphere(const t_sphere *sphere)
 	rt_print_vector(&sphere->position);
 	rt_print_indent(PRINT_INDENT);
 	printf("radius: %f\n", sphere->radius);
-	printf("color: %d,%d,%d\n", sphere->color.r, sphere->color.g, sphere->color.b);
+	printf("color: %d,%d,%d\n", sphere->color.r,
+		sphere->color.g, sphere->color.b);
 }

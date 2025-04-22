@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 18:07:45 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/21 20:44:19 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:41:21 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	parse_cylinder(t_object *obj, char *line)
 		(bool (*)(void *, char *, size_t *))set_height))
 		return (false);
 	if (!skip_and_set(line, &j, &(((t_cylinder *)(obj->object))->color),
-			(bool (*)(void *, char *, size_t *))set_color))
+		(bool (*)(void *, char *, size_t *))set_color))
 		return (false);
 	return (true);
 }

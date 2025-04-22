@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 15:07:31 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:35:26 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,12 @@ typedef struct s_quadratic
 	float	t2;
 }	t_quadratic;
 
+typedef struct s_camera_vectors
+{
+	t_vector	forward;
+	t_vector	right;
+	t_vector	up;
+}	t_camera_vectors;
 
 typedef enum error
 {
@@ -308,6 +314,9 @@ bool	rt_draw_background(t_rt *rt);
 //render
 void	render(t_rt *rt);
 
+//math
+float	solve_quadratic(float a, float b, float discriminant);
+
 //vector
 
 t_vector	vec_add(t_vector a, t_vector b);
@@ -323,6 +332,8 @@ float		vec_len(t_vector a);
 //hit
 bool	hit_plane(t_ray ray, t_plane *plane, float *t);
 bool	hit_sphere(t_ray ray, t_sphere *sphere, float *t);
+bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, float *t);
+bool	hit_cylinder_caps(t_ray ray, t_cylinder *cylinder, float *t);
 bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, float *t);
 
 //color
