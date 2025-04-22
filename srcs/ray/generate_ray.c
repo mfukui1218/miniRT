@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_ray.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:23:45 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 t_ray	generate_ray(t_rt *rt, size_t x, size_t y)
 {
 	t_ray				ray;
-	float				fov_scale;
+	double				fov_scale;
 	t_camera_vectors	camera_vectors;
-	float				u;
-	float				v;
+	double				u;
+	double				v;
 
 	fov_scale = tanf(rt->camera->fov * 0.5f * M_PI / 180.0f);
 	ray.origin = rt->camera->position;

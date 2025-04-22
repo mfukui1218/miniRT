@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_quadratic(.c                                 :+:      :+:    :+:   */
+/*   solve_quadratic.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:26:29 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-float	solve_quadratic(float a, float b, float discriminant)
+double	solve_quadratic(double a, double b, double discriminant)
 {
-	float	t1;
-	float	t2;
+	double	t1;
+	double	t2;
 
 	if (discriminant < 0)
 		return (-1.0f);

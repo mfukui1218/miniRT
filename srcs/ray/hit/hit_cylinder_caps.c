@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder_caps.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:38:57 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	bool	set_cylinder_quadratic(t_quadratic *q,
 {
 	t_vector	d_proj;
 	t_vector	oc_proj;
-	float		radius;
+	double		radius;
 	t_vector	axis;
 
 	radius = cylinder->radius;
@@ -31,11 +31,11 @@ static	bool	set_cylinder_quadratic(t_quadratic *q,
 	return (q->discriminant >= 0);
 }
 
-bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, float *t)
+bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, double *t)
 {
 	t_vector	oc;
 	t_quadratic	quadratic;
-	float		h;
+	double		h;
 	t_vector	hit;
 
 	oc = vec_sub(ray.origin, cylinder->position);

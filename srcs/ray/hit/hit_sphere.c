@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:25:33 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:25:36 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static bool	set_sphere_quadratic(t_quadratic *q,
 		t_vector dir, t_vector oc, t_sphere *sphere)
 {
-	float	radius;
+	double	radius;
 
 	radius = sphere->radius;
 	q->a = vec_dot(dir, dir);
@@ -27,7 +27,7 @@ static bool	set_sphere_quadratic(t_quadratic *q,
 	return (true);
 }
 
-bool	hit_sphere(t_ray ray, t_sphere *sphere, float *t)
+bool	hit_sphere(t_ray ray, t_sphere *sphere, double *t)
 {
 	t_vector	oc;
 	t_quadratic	quadratic;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_length.c                                       :+:      :+:    :+:   */
+/*   vec_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 15:07:36 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-float	vec_len(t_vector vec)
+double	vec_len(t_vector vec)
 {
 	return (sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }

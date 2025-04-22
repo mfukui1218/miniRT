@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_hit_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:24:14 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-static bool	hit_object(t_ray ray, t_object *object, float *t)
+static bool	hit_object(t_ray ray, t_object *object, double *t)
 {
 	if (object->type == SPHERE)
 		return (hit_sphere(ray, (t_sphere *)(object->object), t));
@@ -24,11 +24,11 @@ static bool	hit_object(t_ray ray, t_object *object, float *t)
 }
 
 static bool	hit_object_list(t_rt *rt, t_ray ray,
-		t_object **hit_obj, float *closest_t)
+		t_object **hit_obj, double *closest_t)
 {
 	t_list		*lst;
 	t_object	*obj;
-	float		t;
+	double		t;
 	bool		hit;
 
 	*closest_t = FLT_MAX;
@@ -54,7 +54,7 @@ static bool	hit_object_list(t_rt *rt, t_ray ray,
 t_color	get_hit_color(t_rt *rt, t_ray ray)
 {
 	t_object	*hit_obj;
-	float		closest_t;
+	double		closest_t;
 
 	if (hit_object_list(rt, ray, &hit_obj, &closest_t))
 	{
