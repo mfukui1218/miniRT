@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_add.c                                          :+:      :+:    :+:   */
+/*   vec_length.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 14:09:44 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:07:36 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector	vec_add(t_vector a, t_vector b)
+float	vec_len(t_vector vec)
 {
-	t_vector	result;
-
-	result.x = a.x + b.x;
-	result.y = a.y + b.y;
-	result.z = a.z + b.z;
-	return (result);
+	return (sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }
-

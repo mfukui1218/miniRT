@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 01:11:55 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:07:31 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,13 +242,7 @@ void	inclement_ij(size_t *i, size_t *j);
 bool	is_start_str(char *str, char *start);
 float	ft_atof_index_dev(char *str, size_t *j, bool dev);
 size_t	find_line_str(char **rt, char *start);
-
-//condition
 bool	is_valid_condition(char **rt);
-bool	check_number_with_comma(char *str, size_t *j);
-bool	check_last_number(char *str, size_t *j);
-
-//parse
 
 bool	set_coordinate(void *vec, char *str, size_t *j);
 bool	set_vector(void *vec, char *str, size_t *j);
@@ -260,6 +254,7 @@ bool	set_color(void *color, char *str, size_t *j);
 bool	set_diameter(void *object, char *str, size_t *j);
 bool	set_radius(void *radius, char *str, size_t *j);
 bool	set_height(void *height, char *str, size_t *j);
+bool	set_ray(t_rt *rt);
 int		ft_atoi_index(char *str, size_t *j);
 bool	check_range_int(int value, int min, int max);
 bool	check_range_float(float value, float min, float max);
@@ -322,10 +317,16 @@ t_vector	vec_normalize(t_vector v);
 t_vector	vec_cross(t_vector a, t_vector b);
 float		vec_dot(t_vector a, t_vector b);
 t_vector	vec_scale(t_vector a, float b);
+t_vector	vec_add3(t_vector a, t_vector b, t_vector c);
+float		vec_len(t_vector a);
 
 //hit
 bool	hit_plane(t_ray ray, t_plane *plane, float *t);
 bool	hit_sphere(t_ray ray, t_sphere *sphere, float *t);
 bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, float *t);
+
+//color
+bool	check_number_with_comma(char *str, size_t *j);
+bool	check_last_number(char *str, size_t *j);
 
 #endif

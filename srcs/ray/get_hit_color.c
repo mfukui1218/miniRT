@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 01:14:30 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 14:32:07 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool	hit_object_list(t_rt *rt, t_ray ray, t_object **hit_obj, float *clos
 	return (hit);
 }
 
-t_color get_hit_color(t_rt *rt, t_ray ray)
+t_color	get_hit_color(t_rt *rt, t_ray ray)
 {
 	t_object	*hit_obj;
 	float		closest_t;
