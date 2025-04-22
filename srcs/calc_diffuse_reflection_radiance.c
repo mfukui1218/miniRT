@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_diffuse_reflection_radiance.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:07:17 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/22 16:41:39 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/22 22:21:03 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ t_radiance	calc_diffuse_reflection_radiance(
 	if (is_shadow(rt, ray, object))
 		return (0);
 	normal_ray = generate_normal_ray(rt, ray, object);
-	return (0);
+	return (1);
 }

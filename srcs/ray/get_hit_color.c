@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:11:49 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/22 20:52:18 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	hit_object(t_ray ray, t_object *object, double *t)
 	return (false);
 }
 
-static bool	hit_object_list(t_rt *rt, t_ray ray,
+bool	hit_object_list(t_rt *rt, t_ray ray,
 		t_object **hit_obj, double *closest_t)
 {
 	t_list		*lst;
