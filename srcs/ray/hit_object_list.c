@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_hit_object.c                                   :+:      :+:    :+:   */
+/*   hit_object_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 15:57:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/22 20:35:49 by mfukui           ###   ########.fr       */
+/*   Created: 2025/04/22 20:24:52 by mfukui            #+#    #+#             */
+/*   Updated: 2025/04/22 20:25:28 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ static bool	hit_object(t_ray ray, t_object *object, double *t)
 	return (false);
 }
 
-t_object	*get_hit_object_list(t_rt *rt, t_ray ray)
+bool	hit_object_list(t_rt *rt, t_ray ray,
+		t_object **hit_obj)
 {
 	t_list		*lst;
 	t_object	*obj;
 	double		t;
+	bool		hit;
 	double		*closest_t;
-	t_object	*hit_obj;
 
 	*closest_t = FLT_MAX;
+	hit = false;
 	lst = rt->object;
-	hit_obj = NULL;
 	while (lst)
 	{
 		obj = (t_object *)lst->content;
@@ -42,10 +43,11 @@ t_object	*get_hit_object_list(t_rt *rt, t_ray ray)
 			if (t < *closest_t)
 			{
 				*closest_t = t;
-				hit_obj = obj;
+				*hit_obj = obj;
+				hit = true;
 			}
 		}
 		lst = lst->next;
 	}
-	return (hit_obj);
+	return (hit);
 }

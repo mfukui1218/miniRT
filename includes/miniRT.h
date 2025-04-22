@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:13:02 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/22 20:28:08 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct s_screen
 	double	aspect_ratio;
 	double	scale;
 }	t_screen;
-
-
 
 typedef struct rt
 {
@@ -336,6 +334,7 @@ bool	hit_sphere(t_ray ray, t_sphere *sphere, double *t);
 bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, double *t);
 bool	hit_cylinder_caps(t_ray ray, t_cylinder *cylinder, double *t);
 bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, double *t);
+bool	hit_object_list(t_rt *rt, t_ray ray, t_object **object);
 
 //color
 bool	check_number_with_comma(char *str, size_t *j);
