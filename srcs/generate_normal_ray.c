@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   generate_normal_ray.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:04:04 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/22 15:58:33 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/22 17:04:26 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	set_ray(t_rt *rt)
+t_ray	generate_normal_ray(
+			const t_rt *rt, const t_ray *ray, const t_object *object)
 {
-	size_t		x;
-	size_t		y;
-	int			color;
-	t_ray		ray;
+	t_ray	normal_ray;
 
-	x = 0;
-	while (x < SCREEN_WIDTH)
-	{
-		y = 0;
-		while (y < SCREEN_HEIGHT)
-		{
-			ray = generate_ray(rt, x, y);
-			color = rt_generate_color(rt, &ray);
-			rt_mlx_pixel_put(rt->screen_image, x, y, color);
-			y++;
-		}
-		x++;
-	}
-	return (true);
+	(void)rt;
+	(void)ray;
+	(void)object;
+	ft_memset(&normal_ray, 0, sizeof(t_ray));
+	return (normal_ray);
 }
