@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_ray.c                                          :+:      :+:    :+:   */
+/*   mul_color_radiance.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:04:04 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/22 16:09:59 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/22 16:42:14 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	set_ray(t_rt *rt)
+t_color	mul_color_radiance(t_color color, t_radiance radiance)
 {
-	size_t		x;
-	size_t		y;
-	int			color;
-	t_ray		ray;
+	t_color	ret_color;
 
-	x = 0;
-	while (x < SCREEN_WIDTH)
-	{
-		y = 0;
-		while (y < SCREEN_HEIGHT)
-		{
-			ray = generate_ray(rt, x, y);
-			color = rt_generate_color(rt, &ray);
-			rt_mlx_pixel_put(rt->screen_image, x, y, color);
-			y++;
-		}
-		x++;
-	}
-	return (true);
+	(void)color;
+	(void)radiance;
+	ft_memset(&ret_color, 0xff, sizeof(t_color));
+	return (ret_color);
 }

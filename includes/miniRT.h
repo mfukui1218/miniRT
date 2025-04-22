@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 16:35:26 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/22 17:09:22 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_ambient	t_ambient;
 typedef struct s_image		t_image;
 typedef struct s_screen		t_screen;
 typedef struct s_ray		t_ray;
+typedef float				t_radiance;
 
 typedef void 				(*t_print_func)(const void *);
 
@@ -339,5 +340,22 @@ bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, float *t);
 //color
 bool	check_number_with_comma(char *str, size_t *j);
 bool	check_last_number(char *str, size_t *j);
+
+// 一時的に保管
+t_ray		generate_normal_ray(
+				const t_rt *rt, const t_ray *ray, const t_object *object);
+t_object	*get_hit_object(const t_rt *rt, const t_ray *ray);
+t_color		mul_color_radiance(t_color color, t_radiance radiance);
+int			rt_generate_color(const t_rt *rt, const t_ray *ray);
+t_color		get_object_color(const t_object *object);
+t_radiance	calc_radiance(
+				const t_rt *rt, const t_ray *ray, const t_object *object);
+t_radiance	calc_ambient_radiance(const t_rt *rt);
+t_radiance	calc_diffuse_reflection_radiance(
+				const t_rt *rt, const t_ray *ray, const t_object *object);
+bool		is_shadow(const t_rt *rt, const t_ray *ray, const t_object *object);
+t_object	*get_hit_object(const t_rt *rt, const t_ray *ray);
+void		rt_put_back_ground(const t_rt *rt, int x, int y);
+int			get_color(const t_color *color);
 
 #endif
