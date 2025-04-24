@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:13:02 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/25 03:14:14 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct s_screen
 	double	aspect_ratio;
 	double	scale;
 }	t_screen;
-
-
 
 typedef struct rt
 {
@@ -226,8 +224,8 @@ bool	parse_plane(t_object *obj, char *line);
 bool	parse_cylinder(t_object *obj, char *line);
 
 //ray
-t_ray	generate_ray(t_rt *rt, size_t x, size_t y);
 t_color get_hit_color(t_rt *rt, t_ray ray);
+t_ray	generate_ray(t_rt *rt, size_t x, size_t y);
 
 //error
 void	error_message(int error);
@@ -336,26 +334,27 @@ bool	hit_sphere(t_ray ray, t_sphere *sphere, double *t);
 bool	hit_cylinder_body(t_ray ray, t_cylinder *cylinder, double *t);
 bool	hit_cylinder_caps(t_ray ray, t_cylinder *cylinder, double *t);
 bool	hit_cylinder(t_ray ray, t_cylinder *cylinder, double *t);
+bool	hit_object_list(t_rt *rt, t_ray ray,
+				t_object **hit_obj, double *closest_t);
 
 //color
 bool	check_number_with_comma(char *str, size_t *j);
 bool	check_last_number(char *str, size_t *j);
 
 // 一時的に保管
-t_ray		generate_normal_ray(
-				const t_rt *rt, const t_ray *ray, const t_object *object);
-t_object	*get_hit_object(const t_rt *rt, const t_ray *ray);
-t_color		mul_color_radiance(t_color color, t_radiance radiance);
-int			rt_generate_color(const t_rt *rt, const t_ray *ray);
-t_color		get_object_color(const t_object *object);
-t_radiance	calc_radiance(
-				const t_rt *rt, const t_ray *ray, const t_object *object);
-t_radiance	calc_ambient_radiance(const t_rt *rt);
-t_radiance	calc_diffuse_reflection_radiance(
-				const t_rt *rt, const t_ray *ray, const t_object *object);
-bool		is_shadow(const t_rt *rt, const t_ray *ray, const t_object *object);
-t_object	*get_hit_object(const t_rt *rt, const t_ray *ray);
-void		rt_put_back_ground(const t_rt *rt, int x, int y);
-int			get_color(const t_color *color);
+t_object	*get_hit_object(t_rt *rt, t_ray *ray);
+t_color		mul_color_radiance(t_color color, double radiance);
+int			rt_generate_color(t_rt *rt, t_ray *ray);
+t_color		get_object_color(t_object *object);
+double	calc_radiance(
+				t_rt *rt, t_ray *ray, t_object *object);
+double	calc_ambiendouble(t_rt *rt);
+double	calc_diffuse_reflection_radiance(
+				t_rt *rt, t_ray *ray, t_object *object);
+bool		is_shadow(t_rt *rt, t_ray *ray, t_object *object);
+t_object	*get_hit_object(t_rt *rt, t_ray *ray);
+void		rt_put_back_ground(t_rt *rt, int x, int y);
+int			get_color(t_color *color);
+t_color		add_color(t_color a, t_color b);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:30:15 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/22 16:31:14 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/25 02:37:21 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	get_color(const t_color *color)
+int	get_color(t_color *color)
 {
 	return ((color->r << 16) | (color->g << 8) | color->b);
 }

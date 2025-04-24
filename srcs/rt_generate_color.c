@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rt_generate_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:55:27 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/22 17:05:44 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/25 03:34:09 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	rt_generate_color(const t_rt *rt, const t_ray *ray)
+int	rt_generate_color(t_rt *rt, t_ray *ray)
 {
 	t_color		draw_color;
-	t_radiance	radiance;
+	double		radiance;
 	t_object	*hit_obj;
 	int			color;
 
