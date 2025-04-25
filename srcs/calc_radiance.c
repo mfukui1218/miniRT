@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:14:15 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/25 03:46:52 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/25 14:32:21 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ double	calc_radiance(
 	double radiance;
 
 	radiance = 0;
-	radiance += calc_ambiendouble(rt);
+	radiance += calc_ambient_radiance(rt);
 	radiance += calc_diffuse_reflection_radiance(rt, ray, object);
 	if (radiance < 0)
 		radiance = 0;
-	if (radiance > 1)
+	if (radiance >= 1)
 		radiance = 1;
 	return (radiance);
 }

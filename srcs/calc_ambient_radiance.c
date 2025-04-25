@@ -12,7 +12,7 @@
 
 #include "miniRT.h"
 
-double	calc_ambiendouble(t_rt *rt)
+double	calc_ambient_radiance(t_rt *rt)
 {
 	double result;
 

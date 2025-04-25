@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/25 03:14:14 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/25 14:24:35 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,7 +348,7 @@ int			rt_generate_color(t_rt *rt, t_ray *ray);
 t_color		get_object_color(t_object *object);
 double	calc_radiance(
 				t_rt *rt, t_ray *ray, t_object *object);
-double	calc_ambiendouble(t_rt *rt);
+double	calc_ambient_radiance(t_rt *rt);
 double	calc_diffuse_reflection_radiance(
 				t_rt *rt, t_ray *ray, t_object *object);
 bool		is_shadow(t_rt *rt, t_ray *ray, t_object *object);
