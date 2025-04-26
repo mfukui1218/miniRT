@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 21:18:51 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/20 17:24:01 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	free_relational_mlx(t_rt *rt)
 	}
 	if (rt->mlx)
 	{
+		mlx_destroy_display(rt->mlx);
 		free(rt->mlx);
 		rt->mlx = NULL;
 	}
