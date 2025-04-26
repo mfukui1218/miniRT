@@ -14,9 +14,8 @@
 
 double	calc_ambient_radiance(t_rt *rt)
 {
-	double result;
+	double	result;
 
 	result = rt->ambient->brightness;
-	return(result);
+	return (result);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_object_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/25 03:08:52 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 15:42:40 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,21 @@ bool	hit_object_list(t_rt *rt, t_ray ray,
 	t_object	*obj;
 	double		t;
 	bool		hit;
+	bool		is_init;
 
-	*closest_t = FLT_MAX;
 	hit = false;
 	lst = rt->object;
+	is_init = false;
 	while (lst)
 	{
 		obj = (t_object *)lst->content;
 		if (hit_object(ray, obj, &t))
 		{
-			if (t < *closest_t)
+			if (is_init == false || t < *closest_t)
 			{
 				*closest_t = t;
 				*hit_obj = obj;
+				is_init = true;
 				hit = true;
 			}
 		}

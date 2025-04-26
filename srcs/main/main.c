@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:19:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/20 07:01:56 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/26 15:12:39 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,4 @@ int	main(int argc, char **argv)
 	mlx_loop(rt->mlx);
 	free_rt(rt);
 	return (0);
-}
-
-void	line(void)
-{
-	printf("--------------------------------------------------\n");
 }
