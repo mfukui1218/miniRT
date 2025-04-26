@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_txt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 18:00:24 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 21:28:51 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 21:41:10 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ bool	parse_txt(t_rt *rt, char *file_name)
 	while (1)
 	{
 		if (i >= MAX_TXT_HEIGHT)
-		{
-			close(fd);
-			return (error_message(MAX_TXT), false);
-		}
+			return (close(fd), get_next_line(-1),
+				error_message(MAX_TXT), false);
 		rt->rt[i] = get_next_line(fd);
 		if (!rt->rt[i])
 			break ;
