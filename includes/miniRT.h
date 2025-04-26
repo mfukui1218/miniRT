@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 15:46:32 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/26 17:18:58 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ typedef enum error
 	CYLINDER_RANGE,
 	AMBIENT_RT,
 	AMBIENT_RANGE,
+	MAX_TXT,
 }	t_error;
 
 # define MAX_TXT_HEIGHT	200
