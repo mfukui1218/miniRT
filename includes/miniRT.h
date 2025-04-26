@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/25 14:24:35 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 15:11:20 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-#include <float.h>
 
 typedef struct s_camera		t_camera;
 typedef struct s_light		t_light;
@@ -37,8 +36,7 @@ typedef struct s_image		t_image;
 typedef struct s_screen		t_screen;
 typedef struct s_ray		t_ray;
 typedef double				t_radiance;
-
-typedef void 				(*t_print_func)(const void *);
+typedef void				(*t_print_func)(const void *);
 
 typedef struct s_color
 {
@@ -130,7 +128,7 @@ typedef struct s_cylinder
 	t_color		color;
 }	t_cylinder;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void	*img;
 	char	*addr;
@@ -224,7 +222,7 @@ bool	parse_plane(t_object *obj, char *line);
 bool	parse_cylinder(t_object *obj, char *line);
 
 //ray
-t_color get_hit_color(t_rt *rt, t_ray ray);
+t_color	get_hit_color(t_rt *rt, t_ray ray);
 t_ray	generate_ray(t_rt *rt, size_t x, size_t y);
 
 //error
@@ -264,6 +262,7 @@ int		ft_atoi_index(char *str, size_t *j);
 bool	check_range_int(int value, int min, int max);
 bool	check_range_double(double value, double min, double max);
 
+
 //free
 void	free_rt(t_rt *rt);
 void	free_txt(char **rt);
@@ -275,8 +274,6 @@ void	free_object_list(t_list **obj);
 void	free_vector(t_vector *vector);
 void	free_color(t_color *color);
 void	free_split(char **split);
-
-void line(void);
 
 //printer
 void	rt_print_ambient(const t_ambient *ambient);
@@ -297,9 +294,9 @@ void	rt_print_indent(int indent);
 void	rt_print_with_indent(t_print_func f, const void *arg);
 
 //event handler
-int	rt_expose_event_handler(t_rt *rt);
-int	rt_key_event_handler(int keycode, t_rt *rt);
-int	rt_destroy_event_handler(t_rt *rt);
+int		rt_expose_event_handler(t_rt *rt);
+int		rt_key_event_handler(int keycode, t_rt *rt);
+int		rt_destroy_event_handler(t_rt *rt);
 
 //mlx
 t_image	*rt_new_image(void *mlx, int width, int height);
@@ -340,17 +337,16 @@ bool	hit_object_list(t_rt *rt, t_ray ray,
 //color
 bool	check_number_with_comma(char *str, size_t *j);
 bool	check_last_number(char *str, size_t *j);
+bool	checklast_last_number(char *str, size_t *j);
 
 // 一時的に保管
 t_object	*get_hit_object(t_rt *rt, t_ray *ray);
 t_color		mul_color_radiance(t_color color, double radiance);
 int			rt_generate_color(t_rt *rt, t_ray *ray);
 t_color		get_object_color(t_object *object);
-double	calc_radiance(
-				t_rt *rt, t_ray *ray, t_object *object);
-double	calc_ambient_radiance(t_rt *rt);
-double	calc_diffuse_reflection_radiance(
-				t_rt *rt, t_ray *ray, t_object *object);
+double		calc_radiance(t_rt *rt, t_ray *ray, t_object *object);
+double		calc_ambient_radiance(t_rt *rt);
+double		calc_diffuse_reflection_radiance(t_rt *rt, t_ray *ray, t_object *object);
 bool		is_shadow(t_rt *rt, t_ray *ray, t_object *object);
 t_object	*get_hit_object(t_rt *rt, t_ray *ray);
 void		rt_put_back_ground(t_rt *rt, int x, int y);
