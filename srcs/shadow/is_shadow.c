@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_shadow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:05:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/25 02:37:39 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 15:29:25 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ bool	is_shadow(t_rt *rt, t_ray *ray, t_object *object)
 
 static t_ray	rt_generate_shadow_ray(t_vector *from, t_vector *to)
 {
-	double	epsilon = 1.0 / 512.0;
-	t_ray			ret_ray;
+	double	epsilon;
+	t_ray	ret_ray;
 
+	epsilon = 1.0 / 512.0;
 	ret_ray.direction = vec_normalize(vec_sub(*to, *from));
 	ret_ray.origin.x = from->x + epsilon * ret_ray.direction.x;
 	ret_ray.origin.y = from->y + epsilon * ret_ray.direction.y;

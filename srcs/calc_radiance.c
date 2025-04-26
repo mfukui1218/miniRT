@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_radiance.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:14:15 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/25 14:32:21 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 15:23:21 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 double	calc_radiance(
 				t_rt *rt, t_ray *ray, t_object *object)
 {
-	double radiance;
+	double	radiance;
 
 	radiance = 0;
 	radiance += calc_ambient_radiance(rt);
