@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 21:23:16 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/19 18:36:22 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	free_txt(char **txt)
 	{
 		free(txt[i]);
 		txt[i] = NULL;
-		if (i == MAX_TXT_HEIGHT)
-			break ;
 		i++;
 	}
 	free(txt);
