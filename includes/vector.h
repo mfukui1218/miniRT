@@ -14,5 +14,4 @@ t_vector vec_mul(t_vector a, t_vector b);
 t_vector vec_normalize(t_vector v);
 t_vector vec_cross(t_vector a, t_vector b);
 
-
 #endif
