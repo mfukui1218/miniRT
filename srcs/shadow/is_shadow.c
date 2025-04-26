@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_shadow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:05:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/25 02:37:39 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 14:26:02 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,17 @@ static bool	is_hit_one_object(
 	t_object	*obj;
 	double		closest_t;
 	double		light_len;
+	double		epsilon;
 
+	epsilon = 1 / 512.0;
 	light_len = vec_len(vec_sub(ray->origin, rt->light->position));
 	lst = rt->object;
 	while (lst)
 	{
 		obj = (t_object *)lst->content;
-		if (hit_object(*ray, obj, &closest_t) && closest_t < light_len)
+		if (hit_object(*ray, obj, &closest_t)
+			&& closest_t < light_len
+			&& fabs(light_len - closest_t) > epsilon)
 			return (true);
 		lst = lst->next;
 	}
