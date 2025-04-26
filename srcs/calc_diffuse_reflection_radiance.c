@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:07:17 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/26 15:29:03 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:24:30 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_vector	get_normal_vector(t_object *object, t_vector intersection)
 	if (object->type == SPHERE)
 		return (vec_sub(intersection, ((t_sphere *)object->object)->position));
 	else if (object->type == PLANE)
-		return (vec_scale(((t_plane *)object->object)->orientation, -1));
+		return (((t_plane *)object->object)->orientation);
 	else if (object->type == CYLINDER)
 		return (get_cylinder_normal(
 				intersection, (t_cylinder *)object->object));
@@ -58,15 +58,16 @@ double	calc_diffuse_reflection_radiance(
 	t_vector	intersection;
 	double		result;
 	t_vector	light_dir;
+	t_vector	normal;
 	double		t;
-	double		diff;
 
 	intersection = get_intersection(rt, ray, object, &t);
 	if (is_shadow(rt, ray, object))
 		return (0);
 	light_dir = vec_normalize(vec_sub(rt->light->position, intersection));
-	diff = fmax(0.0, vec_dot(vec_normalize(
-					get_normal_vector(object, intersection)), light_dir));
-	result = diff * rt->light->brightness;
+	normal = vec_normalize(get_normal_vector(object, intersection));
+	if (vec_dot(normal, vec_sub(ray->origin, intersection)) < 0.0)
+		normal = vec_scale(normal, -1);
+	result = fmax(0.0, vec_dot(normal, light_dir)) * rt->light->brightness;
 	return (result);
 }

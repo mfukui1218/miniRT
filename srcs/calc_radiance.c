@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:14:15 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/26 15:23:21 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:32:39 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ double	calc_radiance(
 	radiance = 0;
 	radiance += calc_ambient_radiance(rt);
 	radiance += calc_diffuse_reflection_radiance(rt, ray, object);
+	radiance /= 2.0;
 	if (radiance < 0)
 		radiance = 0;
 	if (radiance >= 1)

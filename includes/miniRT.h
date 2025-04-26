@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 17:18:58 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 20:33:02 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ typedef enum error
 # define ADD_INDENT		1
 # define SUB_INDENT		-1
 # define PRINT_INDENT	0
-# define BG_COLOR		0x0088d2ff
+# define BG_COLOR		0x00000000
 # define LOAD_COLOR		0x00ffffff
 
 void		init_rt(t_rt *rt);
