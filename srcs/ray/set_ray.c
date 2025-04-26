@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/22 17:04:04 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/26 14:44:22 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	set_ray(t_rt *rt)
 		{
 			ray = generate_ray(rt, x, y);
 			color = rt_generate_color(rt, &ray);
-			rt_mlx_pixel_put(rt->screen_image, x, y, color);
+			rt_mlx_pixel_put(rt->screen_image, x, SCREEN_HEIGHT - y - 1, color);
 			y++;
 		}
 		x++;
