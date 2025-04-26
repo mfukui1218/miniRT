@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:19 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/19 21:09:44 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 17:18:40 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ bool	error_message_common(int err)
 		printf("Error\nAllocation error\n");
 	else if (err == OPEN)
 		printf("Error\nFile open error\n");
+	else if (err == MAX_TXT)
+		printf("Error\nMax txt height error\n");
 	else
 		return (false);
 	return (true);
