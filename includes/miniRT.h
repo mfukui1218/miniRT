@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/27 15:47:39 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/27 16:16:38 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,13 +339,13 @@ bool		hit_object_list(t_rt *rt, t_ray ray,
 bool		check_number_with_comma(char *str, size_t *j);
 bool		check_last_number(char *str, size_t *j);
 bool		checklast_last_number(char *str, size_t *j);
+t_color		calc_color(t_radiance radiance, t_color light, t_object *object);
 
 // 一時的に保管
 t_object	*get_hit_object(t_rt *rt, t_ray *ray);
 t_color		mul_color_radiance(t_color color, double radiance);
 int			rt_generate_color(t_rt *rt, t_ray *ray);
 t_color		get_object_color(t_object *object);
-double		calc_radiance(t_rt *rt, t_ray *ray, t_object *object);
 double		calc_ambient_radiance(t_rt *rt);
 double		calc_diffuse_reflection_radiance(
 				t_rt *rt, t_ray *ray, t_object *object);
