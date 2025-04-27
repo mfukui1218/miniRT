@@ -71,7 +71,6 @@ SRCS = \
 	./srcs/ray/set_ray.c \
 	./srcs/render/render.c \
 	./srcs/rt_generate_color.c \
-	./srcs/rt_put_back_ground.c \
 	./srcs/shadow/is_shadow.c \
 	./srcs/utils/error/error_ambient.c \
 	./srcs/utils/error/error_brightness.c \
