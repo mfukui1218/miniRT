@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/27 15:18:32 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/27 15:34:13 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ typedef enum error
 # define MAX_TXT_HEIGHT	200
 # define SCREEN_HEIGHT	800
 # define SCREEN_WIDTH	1800
+# define TAN_MAX		57295779.814
 # define RED			"\e[31m"
 # define GREEN			"\e[32m"
 # define YELLOW			"\e[33m"

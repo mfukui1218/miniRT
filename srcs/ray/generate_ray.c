@@ -6,7 +6,7 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:03:31 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/27 15:20:12 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/27 15:34:36 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_ray	generate_ray_180_fov(t_rt *rt, size_t x,
 	double	v;
 
 	u = (2.0 * (x + 0.5) / rt->screen.width - 1.0)
-		* rt->screen.aspect_ratio;
+		* rt->screen.aspect_ratio * TAN_MAX;
 	v = (1.0 - 2.0 * (y + 0.5) / rt->screen.height);
 	ray.origin = rt->camera->position;
 	ray.direction = get_camera_direction(vectors, u, v);
