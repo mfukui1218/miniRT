@@ -39,18 +39,3 @@ void	*ft_memmove(void	*buf1, const void	*buf2, size_t n)
 	}
 	return (p1);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-
-// int main(void)
-// {
-//	 char data[50] = "abcdef";
-//	 // ft_memmove(NULL, NULL, strlen(data) + 1);
-//	 printf("%s\n", ft_memmove(NULL, NULL, strlen(data) + 1));
-//	 printf("%s\n", "-----------------------");
-//	 char data2[50] = "Hello, World!";
-//	 ft_memmove(data2, data2 + 2, strlen(data2) - 1);
-//	 printf("%s\n", data2);  // 出力: "llo, World!"
-//	 return 0;
-// }

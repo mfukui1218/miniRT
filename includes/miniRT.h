@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/27 16:16:38 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/27 16:33:03 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct rt
 {
 	void		*mlx;
 	void		*win;
-	t_image		*screen_image;	// TODO: into some, merge to some or etc...
+	t_image		*screen_image;
 	char		**rt;
 	t_camera	*camera;
 	t_ambient	*ambient;
@@ -341,7 +341,6 @@ bool		check_last_number(char *str, size_t *j);
 bool		checklast_last_number(char *str, size_t *j);
 t_color		calc_color(t_radiance radiance, t_color light, t_object *object);
 
-// 一時的に保管
 t_object	*get_hit_object(t_rt *rt, t_ray *ray);
 t_color		mul_color_radiance(t_color color, double radiance);
 int			rt_generate_color(t_rt *rt, t_ray *ray);

@@ -54,22 +54,3 @@ char	*ft_itoa(int n)
 	result[ft_num_len(n) + (n < 0)] = '\0';
 	return (result);
 }
-
-//  #include <stdio.h>
-
-// // ... あなたの ft_itoa および ft_num_len 関数 ...
-
-// int main()
-// {
-// 	int numbers[] = { 0, -123, 456, 7890, -54321 };
-// 	int n = sizeof(numbers) / sizeof(numbers[0]);
-
-// 	for (int i = 0; i < n; i++)
-// 	{
-// 		char *converted = ft_itoa(numbers[i]);
-// 		printf("%d -> %s\n", numbers[i], converted);
-// 		free(converted);
-// 	}
-
-// 	return 0;
-// }

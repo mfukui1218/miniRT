@@ -37,22 +37,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	arr[i] = '\0';
 	return (arr);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// #include <stdio.h>
-
-// // ft_substrの定義をここにコピペするか、適切なヘッダーファイルをインクルードします。
-
-// int main(void)
-// {
-//	 char str[] = "ABCDE";
-//	 char *substr;
-
-//	 substr = ft_substr(str, 2, 3);
-//	 printf("Original string: %s\n", str);
-//	 printf("Sub-string: %s\n", substr);
-
-//	 free(substr);  // mallocで確保したメモリは使用後に解放する必要があります。
-//	 return 0;
-// }
