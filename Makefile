@@ -121,7 +121,7 @@ SRCS = \
 	./srcs/vector/vec_scale.c \
 	./srcs/vector/vec_sub.c \
 	./srcs/calc_diffuse_reflection_radiance.c \
-	./srcs/calc_radiance.c
+	./srcs/color/calc_color.c
 
 
 # ディレクトリ設定
