@@ -6,12 +6,14 @@
 /*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:19:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 15:12:39 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/26 21:59:10 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 #include <X11/X.h>
+
+static bool	path_condition(const char *file_path);
 
 int	main(int argc, char **argv)
 {
@@ -19,6 +21,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (printf("Error\nInvalid number of arguments\n"), EXIT_FAILURE);
+	if (!path_condition(argv[1]))
+		return (printf("Error\nInvalid file name\n"), EXIT_FAILURE);
 	rt = malloc(sizeof(t_rt));
 	if (!rt)
 		return (EXIT_FAILURE);
@@ -33,4 +37,20 @@ int	main(int argc, char **argv)
 	mlx_loop(rt->mlx);
 	free_rt(rt);
 	return (0);
+}
+
+static bool	path_condition(const char *file_path)
+{
+	size_t	i;
+
+	if (ft_strlen(file_path) <= 2)
+		return (printf("Error\nInappropriate file name.\n"), 0);
+	i = 0;
+	while (file_path[i])
+		i++;
+	i--;
+	if (!(file_path[i - 2] == '.' && file_path[i - 1] == 'r'
+			&& file_path[i] == 't'))
+		return (printf("Error\nInappropriate file name.\n"), 0);
+	return (true);
 }

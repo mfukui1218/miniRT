@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_shadow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
+/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 16:05:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/26 14:26:02 by tookuyam         ###   ########.fr       */
+/*   Updated: 2025/04/26 20:45:34 by mfukui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_ray	rt_generate_shadow_ray(t_vector *from, t_vector *to)
 	double	epsilon;
 	t_ray	ret_ray;
 
-	epsilon = 1.0 / 512.0;
+	epsilon = 1.0 / 1.0;
 	ret_ray.direction = vec_normalize(vec_sub(*to, *from));
 	ret_ray.origin.x = from->x + epsilon * ret_ray.direction.x;
 	ret_ray.origin.y = from->y + epsilon * ret_ray.direction.y;

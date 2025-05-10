@@ -36,22 +36,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result[i] = '\0';
 	return (result);
 }
-
-// #include <stdio.h>
-
-// int main(void) {
-//	 char const *test1 = "123a111111111111111111111";
-//	 char const *set1 = "123";
-//	 char *result1 = ft_strtrim(test1, set1);
-//	 printf("トリミング前: '%s'\n", test1);
-//	 printf("トリミング後: '%s'\n", result1);
-//	 free(result1);
-//	 char const *test2 = "!!!!Hello World!!!!";
-//	 char const *set2 = "!";
-//	 char *result2 = ft_strtrim(test2, set2);
-//	 printf("トリミング前: '%s'\n", test2);
-//	 printf("トリミング後: '%s'\n", result2);
-//	 free(result2);
-
-//	 return 0;
-// }

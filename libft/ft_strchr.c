@@ -24,23 +24,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
-
-// #include <string.h>
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char str[] = "abcdefghijklmnabcdefghijklmn", *p;
-// 	int c;
-
-// 	printf("検索文字を入力してください。");
-// 	c = getchar();
-// 	p = strchr(str, c);
-// 	if (p != NULL) {
-// 		printf("%cは文字列の%ld番目にあります。\n", c, p-str);
-// 		printf("以降の文字列は%sです。\n", p);
-// 	}
-// 	else
-// 		printf("%cは見つかりませんでした\n", c);
-// 	return 0;
-// }

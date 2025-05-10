@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfukui <mfukui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 22:06:11 by mfukui            #+#    #+#             */
-/*   Updated: 2025/04/26 17:18:58 by mfukui           ###   ########.fr       */
+/*   Updated: 2025/04/27 16:33:03 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct rt
 {
 	void		*mlx;
 	void		*win;
-	t_image		*screen_image;	// TODO: into some, merge to some or etc...
+	t_image		*screen_image;
 	char		**rt;
 	t_camera	*camera;
 	t_ambient	*ambient;
@@ -187,6 +187,7 @@ typedef enum error
 # define MAX_TXT_HEIGHT	200
 # define SCREEN_HEIGHT	800
 # define SCREEN_WIDTH	1000
+# define TAN_MAX		57295779.814
 # define RED			"\e[31m"
 # define GREEN			"\e[32m"
 # define YELLOW			"\e[33m"
@@ -197,7 +198,7 @@ typedef enum error
 # define ADD_INDENT		1
 # define SUB_INDENT		-1
 # define PRINT_INDENT	0
-# define BG_COLOR		0x0088d2ff
+# define BG_COLOR		0x00000000
 # define LOAD_COLOR		0x00ffffff
 
 void		init_rt(t_rt *rt);
@@ -338,13 +339,12 @@ bool		hit_object_list(t_rt *rt, t_ray ray,
 bool		check_number_with_comma(char *str, size_t *j);
 bool		check_last_number(char *str, size_t *j);
 bool		checklast_last_number(char *str, size_t *j);
+t_color		calc_color(t_radiance radiance, t_color light, t_object *object);
 
-// 一時的に保管
 t_object	*get_hit_object(t_rt *rt, t_ray *ray);
 t_color		mul_color_radiance(t_color color, double radiance);
 int			rt_generate_color(t_rt *rt, t_ray *ray);
 t_color		get_object_color(t_object *object);
-double		calc_radiance(t_rt *rt, t_ray *ray, t_object *object);
 double		calc_ambient_radiance(t_rt *rt);
 double		calc_diffuse_reflection_radiance(
 				t_rt *rt, t_ray *ray, t_object *object);

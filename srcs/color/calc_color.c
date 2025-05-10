@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_radiance.c                                    :+:      :+:    :+:   */
+/*   calc_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 16:14:15 by tookuyam          #+#    #+#             */
-/*   Updated: 2025/04/26 15:23:21 by tookuyam         ###   ########.fr       */
+/*   Created: 2025/04/27 15:03:38 by tookuyam          #+#    #+#             */
+/*   Updated: 2025/04/27 16:00:56 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	calc_radiance(
-				t_rt *rt, t_ray *ray, t_object *object)
+t_color	calc_color(t_radiance radiance, t_color light, t_object *object)
 {
-	double	radiance;
+	t_color	obj_color;
+	t_color	ret_color;
 
-	radiance = 0;
-	radiance += calc_ambient_radiance(rt);
-	radiance += calc_diffuse_reflection_radiance(rt, ray, object);
-	if (radiance < 0)
-		radiance = 0;
-	if (radiance >= 1)
-		radiance = 1;
-	return (radiance);
+	obj_color = get_object_color(object);
+	ret_color.r = radiance * light.r * ((obj_color.r) / 255.0);
+	ret_color.g = radiance * light.g * ((obj_color.g) / 255.0);
+	ret_color.b = radiance * light.b * ((obj_color.b) / 255.0);
+	return (ret_color);
 }

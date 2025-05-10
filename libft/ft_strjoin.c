@@ -39,27 +39,3 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	result[i] = '\0';
 	return (result);
 }
-
-// #include <stdio.h>
-
-// // 前に定義した ft_strjoin のコードをここに含めてください
-
-// int main()
-// {
-//	 char const *s1 = "Hello, ";
-//	 char const *s2 = "World!";
-//	 char *result;
-
-//	 result = ft_strjoin(s1, s2);
-//	 if (result)
-//	 {
-//		 printf("Joined string: %s\n", result);
-//		 free(result);  // malloc で確保したメモリを解放
-//	 }
-//	 else
-//	 {
-//		 printf("Memory allocation failed.\n");
-//	 }
-
-//	 return 0;
-// }

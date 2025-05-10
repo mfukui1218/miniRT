@@ -25,25 +25,3 @@ void	ft_bzero(void	*s, size_t n)
 		i++;
 	}
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-//	 char str[20] = "Hello, world!";
-//	 printf("Before ft_bzero: %s\n", str);
-
-//	 ft_bzero(str, 5);
-//	 printf("After ft_bzero (first 5 characters set to zero): ");
-//	 // 文字列の先頭の5文字は0になっているので、それぞれの文字を出力する
-//	 for (int i = 0; i < 20; i++)
-//	 {
-//		 if (str[i])
-//			 putchar(str[i]);
-//		 else
-//			 putchar('_');  // '\0' の場所をアンダースコアで表示する
-//	 }
-
-//	 putchar('\n');
-//	 return 0;
-// }
